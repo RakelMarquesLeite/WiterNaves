@@ -1,0 +1,10 @@
+{
+  "description": "This web application offers a tailored platform for users to create and manage websites, featuring customizable designs and essential information integration.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
