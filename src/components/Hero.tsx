@@ -19,11 +19,6 @@ export default function Hero({ scrollTo }: HeroProps) {
           "linear-gradient(135deg, #f5c800 0%, #f0a800 40%, #e07000 80%, #c05500 100%)",
       }}
     >
-      {/* Decorative sun */}
-      <div className="absolute right-[-7rem] top-20 sm:right-[-5rem] lg:right-8 lg:top-16 opacity-10 pointer-events-none select-none">
-        <div className="w-72 h-52 sm:w-80 sm:h-60 lg:w-96 lg:h-96 rounded-full border-8 border-white/40" />
-      </div>
-
       {/* Número 50 */}
       <div className="absolute right-5 top-24 sm:right-8 sm:top-24 lg:right-10 lg:top-24 pointer-events-none select-none z-10">
         <span

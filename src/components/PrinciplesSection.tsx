@@ -66,20 +66,22 @@ export default function PrinciplesSection({
 
           {/* PDF Download Card */}
           <div className="bg-gray-900 border border-gray-700 rounded-2xl p-6 flex flex-col items-center gap-4">
-            <div
-              className="w-3 h-3 rounded-full bg-red-600"
-              aria-hidden="true"
-            />
-            <h3
-              className="text-white font-black text-center"
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "1.05rem",
-                letterSpacing: "0.03em",
-              }}
-            >
-              BAIXE O PLANO DE GOVERNO COMPLETO
-            </h3>
+            <div className="flex items-center justify-center gap-3">
+              <div
+                className="w-3 h-3 rounded-full bg-red-600 shrink-0"
+                aria-hidden="true"
+              />
+              <h3
+                className="text-white font-black text-center"
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "1.05rem",
+                  letterSpacing: "0.03em",
+                }}
+              >
+                BAIXE O PLANO DE GOVERNO COMPLETO
+              </h3>
+            </div>
             <p className="text-gray-400 text-sm text-center leading-relaxed">
               Conheça todas as propostas, programas e ações para transformar o
               Tocantins.

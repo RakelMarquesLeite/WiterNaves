@@ -29,20 +29,22 @@ export default function ProposalsSection() {
               key={p.area}
               className="bg-gray-900 border border-gray-800 hover:border-yellow-400/40 rounded-2xl p-6 transition-colors group"
             >
-              <div
-                className="w-3 h-3 rounded-full bg-yellow-400 mb-5"
-                aria-hidden="true"
-              />
-              <h3
-                className="text-yellow-400 font-black mb-3"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "1.1rem",
-                  letterSpacing: "0.05em",
-                }}
-              >
-                {p.area.toUpperCase()}
-              </h3>
+              <div className="flex items-center gap-3 mb-3">
+                <div
+                  className="w-3 h-3 rounded-full bg-yellow-400 shrink-0"
+                  aria-hidden="true"
+                />
+                <h3
+                  className="text-yellow-400 font-black"
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "1.1rem",
+                    letterSpacing: "0.05em",
+                  }}
+                >
+                  {p.area.toUpperCase()}
+                </h3>
+              </div>
               <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
                 {p.text}
               </p>
