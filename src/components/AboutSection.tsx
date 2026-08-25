@@ -34,7 +34,7 @@ export default function AboutSection() {
               </p>
               <p>
                 Com uma trajetória de luta pela democracia e pela justiça
-                social, Witer Naves representa uma nova forma de fazer política:
+                social, Prof. Winter Naves representa uma nova forma de fazer política:
                 transparente, participativa e voltada para o bem-estar de todos.
               </p>
               <p>
@@ -52,14 +52,14 @@ export default function AboutSection() {
               className="block mt-3 text-yellow-400 font-bold not-italic text-sm"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              — PROF. WITER NAVES
+              — PROF. WINTER NAVES
             </cite>
           </div>
 
       <div className="relative hidden lg:flex justify-end">
             <img
               src={fotoWiter2}
-              alt="Prof. Witer Naves"
+              alt="Prof. Winter Naves"
           className="w-64 sm:w-80 lg:w-[30rem] xl:w-[34rem] max-h-[54svh] sm:max-h-[540px] lg:max-h-[650px] object-cover"
               style={{ maxHeight: "650px", objectPosition: "center top" }}
             />

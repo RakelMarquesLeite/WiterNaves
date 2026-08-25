@@ -4,6 +4,7 @@ export interface NewsItem {
   category: string
   title: string
   summary: string
+  url?: string
 }
 
 export const NAV_LINKS = [
@@ -13,6 +14,7 @@ export const NAV_LINKS = [
   { label: "Propostas", href: "#propostas" },
   { label: "Baixar Plano", href: "#plano" },
   { label: "Notícias", href: "#noticias" },
+  { label: "Candidatos", href: "#candidatos" },
   { label: "Participe", href: "#participe" },
 ]
 
@@ -22,7 +24,7 @@ export const INITIAL_NEWS: NewsItem[] = [
     date: "05 AGO 2026",
     category: "Campanha",
     title:
-      "Witer Naves lança plano de governo com foco nos direitos do povo tocantinense",
+      "Prof. Winter Naves lança plano de governo com foco nos direitos do povo tocantinense",
     summary:
       "Candidato apresenta documento com mais de 100 propostas para transformar o Tocantins em um estado mais justo e igualitário.",
   },

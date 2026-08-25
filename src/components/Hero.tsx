@@ -96,7 +96,7 @@ export default function Hero({ scrollTo }: HeroProps) {
             <div className="flex bg-white/90 backdrop-blur rounded-xl overflow-hidden shadow-xl mb-6 sm:mb-8 w-full sm:w-auto">
               <img
                 src={fotoWiter}
-                alt="Prof. Witer Naves"
+                alt="Prof. Winter Naves"
                 className="lg:hidden w-20 shrink-0 object-cover object-top"
               />
               <div className="flex flex-1 flex-col sm:flex-row">
@@ -112,7 +112,7 @@ export default function Hero({ scrollTo }: HeroProps) {
                       letterSpacing: "0.03em",
                     }}
                   >
-                    PROF. WITER NAVES
+                    PROF. WINTER NAVES
                   </p>
                 </div>
                 <div className="px-4 sm:px-5 py-3 sm:py-4">
@@ -162,7 +162,7 @@ export default function Hero({ scrollTo }: HeroProps) {
           <div className="hidden lg:flex justify-end items-end lg:mr-0 xl:mr-4 mt-2 lg:mt-0">
             <img
               src={fotoWiter}
-              alt="Prof. Witer Naves – Candidato a Governador do Tocantins"
+              alt="Prof. Winter Naves – Candidato a Governador do Tocantins"
               className="w-60 sm:w-80 lg:w-[30rem] xl:w-[34rem] max-h-[46svh] sm:max-h-[500px] lg:max-h-[620px] object-cover object-top"
               style={{ maxHeight: "620px", objectPosition: "center top" }}
             />

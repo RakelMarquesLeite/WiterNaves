@@ -21,7 +21,7 @@ export default function Navbar({ menuOpen, setMenuOpen, activeSection, scrollTo 
             className="text-yellow-400 font-bold text-xs sm:text-sm hidden sm:block ml-3 whitespace-nowrap"
             style={{ fontFamily: "var(--font-display)", letterSpacing: "0.05em" }}
           >
-            WITER NAVES
+            PROF. WINTER NAVES
           </span>
         </div>
 

@@ -40,6 +40,7 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
     category: "",
     title: "",
     summary: "",
+    url: "",
   })
   const [saved, setSaved] = useState(false)
 
@@ -106,6 +107,7 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
       category: n.category,
       title: n.title,
       summary: n.summary,
+      url: n.url ?? "",
     })
   }
 
@@ -116,8 +118,9 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
       category: "",
       title: "",
       summary: "",
+      url: "",
     })
-    setForm({ date: "", category: "", title: "", summary: "" })
+    setForm({ date: "", category: "", title: "", summary: "", url: "" })
   }
 
   const saveItem = () => {
@@ -138,6 +141,14 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
       wordCount(form.summary) > WORD_LIMITS.summary
     )
       return
+    if (form.url.trim()) {
+      try {
+        const parsed = new URL(form.url)
+        if (!["http:", "https:"].includes(parsed.protocol)) return
+      } catch {
+        return
+      }
+    }
     const updated = news.some((n) => n.id === editing.id)
       ? news.map((n) => (n.id === editing.id ? { ...editing, ...form } : n))
       : [{ ...editing, ...form }, ...news]
@@ -339,6 +350,24 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
                     rows={3}
                     placeholder="Resumo da notícia…"
                     className="w-full rounded-lg px-3 py-2 text-white text-sm outline-none resize-none"
+                    style={{
+                      background: "#111",
+                      border: "1px solid rgba(255,255,255,0.1)",
+                    }}
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block text-gray-500 text-xs mb-1">
+                    Link da notícia externa (opcional)
+                  </label>
+                  <input
+                    type="url"
+                    value={form.url}
+                    onChange={(e) =>
+                      setForm((v) => ({ ...v, url: e.target.value }))
+                    }
+                    placeholder="https://exemplo.com/noticia"
+                    className="w-full rounded-lg px-3 py-2 text-white text-sm outline-none"
                     style={{
                       background: "#111",
                       border: "1px solid rgba(255,255,255,0.1)",

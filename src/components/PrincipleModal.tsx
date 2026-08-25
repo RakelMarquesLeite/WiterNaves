@@ -5,9 +5,11 @@ import planoPdf from "@/imports/ITEM_7._PLANO_DE_GOVERNO_REDE_PSOL_MELHORADO.pdf
 export default function PrincipleModal({
   principle,
   onClose,
+  onSuggest,
 }: {
   principle: typeof PRINCIPLES_DETAIL[number]
   onClose: () => void
+  onSuggest: () => void
 }) {
   useEffect(() => {
     document.body.style.overflow = "hidden"
@@ -129,6 +131,13 @@ export default function PrincipleModal({
           >
             ↓ BAIXAR PLANO COMPLETO (PDF)
           </a>
+          <button
+            onClick={onSuggest}
+            className="flex-1 py-3 rounded-xl font-black text-sm tracking-wide bg-yellow-400 text-gray-950 hover:bg-yellow-300 transition-colors"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            SUGESTÃO
+          </button>
           <button
             onClick={onClose}
             className="flex-1 py-3 rounded-xl font-black text-sm tracking-wide border border-gray-600 text-gray-300 hover:border-gray-400 transition-colors"

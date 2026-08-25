@@ -26,10 +26,10 @@ export default function NewsSection({ news }: NewsSectionProps) {
       </h2>
     </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
-      {news.map((n) => (
+      {news.map((n) => {
+        const content = (
         <article
-          key={n.id}
-          className="bg-gray-950 border border-gray-800 hover:border-yellow-400/30 rounded-2xl overflow-hidden transition-colors group"
+          className="h-full bg-gray-950 border border-gray-800 hover:border-yellow-400/50 rounded-2xl overflow-hidden transition-colors group"
         >
           <div className="h-2 bg-gradient-to-r from-yellow-400 to-red-600" />
           <div className="p-6">
@@ -45,9 +45,20 @@ export default function NewsSection({ news }: NewsSectionProps) {
             <p className="text-gray-400 text-sm leading-relaxed">
               {n.summary}
             </p>
+            {n.url && (
+              <span className="inline-block mt-5 text-yellow-400 text-sm font-bold group-hover:underline">
+                Ler notícia completa ↗
+              </span>
+            )}
           </div>
         </article>
-      ))}
+        )
+        return n.url ? (
+          <a key={n.id} href={n.url} target="_blank" rel="noopener noreferrer" aria-label={`${n.title} (abre em nova aba)`}>
+            {content}
+          </a>
+        ) : <div key={n.id}>{content}</div>
+      })}
     </div>
   </div>
 </section>

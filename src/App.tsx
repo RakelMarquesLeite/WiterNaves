@@ -12,11 +12,12 @@ import ProposalsSection from "./components/ProposalsSection"
 import PlanSection from "./components/PlanSection"
 import NewsSection from "./components/NewsSection"
 import ParticipateSection from "./components/ParticipateSection"
+import CandidatesSection from "./components/CandidatesSection"
 import Footer from "./components/Footer"
 
 function shareOrCopy() {
   const url = window.location.href.split("#")[0]
-  const data = { title: "Plano de Governo – Witer Naves", url }
+  const data = { title: "Plano de Governo – Prof. Winter Naves", url }
   if (typeof navigator.share === "function") {
     navigator.share(data).catch(() => {})
   } else {
@@ -90,7 +91,7 @@ export default function App() {
           nome: formData.nome,
           email: formData.email,
           mensagem: formData.mensagem,
-          _subject: `Nova sugestão de ${formData.nome} – Portal Witer Naves`,
+          _subject: `Nova sugestão de ${formData.nome} – Portal Prof. Winter Naves`,
           _replyto: formData.email,
           _template: "table",
         }),
@@ -111,7 +112,16 @@ export default function App() {
 
   return (
     <div className="min-h-screen overflow-x-hidden" style={{ fontFamily: "var(--font-body)" }}>
-      {activePrinciple && <PrincipleModal principle={activePrinciple} onClose={() => setActivePrinciple(null)} />}
+      {activePrinciple && (
+        <PrincipleModal
+          principle={activePrinciple}
+          onClose={() => setActivePrinciple(null)}
+          onSuggest={() => {
+            setActivePrinciple(null)
+            window.setTimeout(() => scrollTo("#participe"), 50)
+          }}
+        />
+      )}
       {adminOpen && <AdminPanel onClose={() => setAdminOpen(false)} />}
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} activeSection={activeSection} scrollTo={scrollTo} />
       <main>
@@ -121,6 +131,7 @@ export default function App() {
         <ProposalsSection />
         <PlanSection shareOrCopy={shareOrCopy} />
         <NewsSection news={news} />
+        <CandidatesSection />
         <ParticipateSection formSent={formSent} formError={formError} formData={formData} setFormData={setFormData} onSubmit={handleSubmit} resetForm={resetForm} />
       </main>
       <Footer navLinks={NAV_LINKS} scrollTo={scrollTo} handleCopyrightClick={handleCopyrightClick} />

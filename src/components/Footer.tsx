@@ -32,11 +32,11 @@ export default function Footer({ navLinks, scrollTo, handleCopyrightClick }: Foo
               letterSpacing: "0.1em",
             }}
           >
-            WITER NAVES
+            PROF. WINTER NAVES
           </span>
         </div>
         <p className="text-gray-400 text-sm leading-relaxed">
-          Portal Oficial da Campanha de Witer Naves ao Governo do
+          Portal Oficial da Campanha do Prof. Winter Naves ao Governo do
           Tocantins 2026. PSOL + REDE Sustentabilidade.
         </p>
       </div>
@@ -106,7 +106,7 @@ export default function Footer({ navLinks, scrollTo, handleCopyrightClick }: Foo
         onClick={handleCopyrightClick}
         title=""
       >
-        © 2026 Portal Oficial – Witer Naves. Todos os direitos reservados.
+        © 2026 Portal Oficial – Prof. Winter Naves. Todos os direitos reservados.
       </p>
     </div>
   </div>
