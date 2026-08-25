@@ -29,7 +29,7 @@ const CANDIDATES = [
   {
     name: "Angélica",
     role: "Candidata a deputada estadual",
-    number: "50149",
+    number: "180",
     image: fotoAngelica,
     imagePosition: "center 20%",
     brief: "Candidatura comprometida com participação popular, inclusão social e desenvolvimento sustentável.",
@@ -38,7 +38,7 @@ const CANDIDATES = [
   {
     name: "Zaira",
     role: "Candidata a deputada estadual",
-    number: "50011",
+    number: "1818",
     image: fotoZaira,
     imagePosition: "center 20%",
     brief: "Uma voz em defesa dos direitos sociais, da educação pública e da valorização das comunidades.",
@@ -47,7 +47,7 @@ const CANDIDATES = [
   {
     name: "Marabá",
     role: "Candidato a deputado estadual",
-    number: "50217",
+    number: "1800",
     image: fotoMaraba,
     imagePosition: "center 20%",
     brief: "Candidatura popular focada em trabalho, cidadania e políticas públicas acessíveis para todas as pessoas.",
@@ -56,7 +56,7 @@ const CANDIDATES = [
   {
     name: "Cláudia",
     role: "Candidata a deputada estadual",
-    number: "50018",
+    number: "1833",
     image: fotoClaudia,
     imagePosition: "center 20%",
     brief: "Compromisso com igualdade, sustentabilidade e uma representação política presente e participativa.",
