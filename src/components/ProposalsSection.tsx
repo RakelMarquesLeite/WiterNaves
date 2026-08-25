@@ -23,11 +23,11 @@ export default function ProposalsSection() {
             NOSSAS PROPOSTAS
           </h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="mobile-carousel -mx-4 px-4 flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:overflow-visible sm:pb-0 sm:snap-none sm:gap-6">
           {PROPOSALS.map((p) => (
             <div
               key={p.area}
-              className="bg-gray-900 border border-gray-800 hover:border-yellow-400/40 rounded-2xl p-6 transition-colors group"
+              className="min-w-[84%] snap-center bg-gray-900 border border-gray-800 hover:border-yellow-400/40 rounded-2xl p-6 transition-colors group sm:min-w-0"
             >
               <div className="flex items-center gap-3 mb-3">
                 <div

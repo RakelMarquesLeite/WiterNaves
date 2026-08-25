@@ -56,7 +56,14 @@ export default function AboutSection() {
             </cite>
           </div>
 
-      <div className="relative hidden lg:flex justify-end">
+          <div className="relative hidden lg:flex justify-end">
+            <span
+              className="absolute right-0 top-0 z-10 text-red-600 font-black leading-none select-none"
+              style={{ fontFamily: "var(--font-display)", fontSize: "clamp(6rem, 12vw, 10rem)" }}
+              aria-label="Número 50"
+            >
+              50
+            </span>
             <img
               src={fotoWiter2}
               alt="Prof. Winter Naves"

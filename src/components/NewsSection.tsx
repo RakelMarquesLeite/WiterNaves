@@ -25,7 +25,7 @@ export default function NewsSection({ news }: NewsSectionProps) {
         NOTÍCIAS DA CAMPANHA
       </h2>
     </div>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
+    <div className="mobile-carousel -mx-4 px-4 flex overflow-x-auto snap-x snap-mandatory gap-5 pb-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:overflow-visible sm:pb-0 sm:snap-none sm:gap-8">
       {news.map((n) => {
         const content = (
         <article
@@ -54,10 +54,10 @@ export default function NewsSection({ news }: NewsSectionProps) {
         </article>
         )
         return n.url ? (
-          <a key={n.id} href={n.url} target="_blank" rel="noopener noreferrer" aria-label={`${n.title} (abre em nova aba)`}>
+          <a className="min-w-[86%] snap-center sm:min-w-0" key={n.id} href={n.url} target="_blank" rel="noopener noreferrer" aria-label={`${n.title} (abre em nova aba)`}>
             {content}
           </a>
-        ) : <div key={n.id}>{content}</div>
+        ) : <div className="min-w-[86%] snap-center sm:min-w-0" key={n.id}>{content}</div>
       })}
     </div>
   </div>
