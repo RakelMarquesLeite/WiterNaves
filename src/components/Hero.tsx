@@ -2,7 +2,7 @@ import React from "react"
 import logoPsol from "@/imports/logopsol (1).png"
 import logoRede from "@/imports/logorede.png"
 import fotoWiter from "@/imports/foto.png"
-import fotoLucia from "@/imports/lucia-topo.png"
+import fotoChapa from "@/imports/image.png"
 import planoPdf from "@/imports/ITEM_7._PLANO_DE_GOVERNO_REDE_PSOL_MELHORADO.pdf"
 
 interface HeroProps {
@@ -133,9 +133,10 @@ export default function Hero({ scrollTo }: HeroProps) {
               </div>
               <div className="lg:hidden relative w-[4.5rem] sm:w-20 shrink-0 overflow-hidden" aria-label="Lúcia Viana">
                 <img
-                  src={fotoLucia}
+                  src={fotoChapa}
                   alt="Lúcia Viana"
-                  className="absolute bottom-0 left-1/2 h-[115%] max-w-none -translate-x-1/2 object-contain"
+                  className="absolute -top-1/3 right-0 h-[133%] max-w-none w-[190px] sm:w-[215px] object-cover"
+                  style={{ objectPosition: "82% 65%" }}
                 />
               </div>
             </div>
@@ -174,11 +175,12 @@ export default function Hero({ scrollTo }: HeroProps) {
                 className="h-full w-full object-cover object-top"
               />
             </div>
-            <div className="relative h-full w-[17rem] xl:w-[19rem] overflow-visible flex items-end justify-center">
+            <div className="relative h-full w-[17rem] xl:w-[19rem] overflow-hidden">
               <img
-                src={fotoLucia}
+                src={fotoChapa}
                 alt="Lúcia Viana – Candidata a Vice-governadora do Tocantins"
-                className="w-[26rem] xl:w-[30rem] max-w-none object-contain"
+                className="absolute -top-1/3 inset-x-0 h-[133%] w-full object-cover"
+                style={{ objectPosition: "82% 67%" }}
               />
             </div>
           </div>
