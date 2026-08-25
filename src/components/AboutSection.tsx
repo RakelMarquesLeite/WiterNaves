@@ -56,10 +56,10 @@ export default function AboutSection() {
             </cite>
           </div>
 
-          <div className="relative hidden lg:flex justify-end">
+          <div className="relative hidden lg:flex items-center justify-end gap-5 xl:gap-8">
             <span
-              className="absolute right-0 top-0 z-10 text-red-600 font-black leading-none select-none"
-              style={{ fontFamily: "var(--font-display)", fontSize: "clamp(6rem, 12vw, 10rem)" }}
+              className="shrink-0 text-red-600 font-black leading-none select-none"
+              style={{ fontFamily: "var(--font-display)", fontSize: "clamp(5rem, 8vw, 8rem)" }}
               aria-label="Número 50"
             >
               50
