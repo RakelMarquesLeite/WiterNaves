@@ -2,7 +2,6 @@ import React from "react"
 import logoPsol from "@/imports/logopsol (1).png"
 import logoRede from "@/imports/logorede.png"
 import fotoWiter from "@/imports/foto.png"
-import fotoChapa from "@/imports/image.png"
 import planoPdf from "@/imports/ITEM_7._PLANO_DE_GOVERNO_REDE_PSOL_MELHORADO.pdf"
 
 interface HeroProps {
@@ -131,14 +130,6 @@ export default function Hero({ scrollTo }: HeroProps) {
                   </p>
                 </div>
               </div>
-              <div className="lg:hidden relative w-[4.5rem] sm:w-20 shrink-0 overflow-hidden" aria-label="Lúcia Viana">
-                <img
-                  src={fotoChapa}
-                  alt="Lúcia Viana"
-                  className="absolute -top-1/3 right-0 h-[133%] max-w-none w-[190px] sm:w-[215px] object-cover"
-                  style={{ objectPosition: "82% 65%" }}
-                />
-              </div>
             </div>
 
             <div className="flex flex-col sm:flex-row flex-wrap gap-3">
@@ -167,22 +158,13 @@ export default function Hero({ scrollTo }: HeroProps) {
           </div>
 
           {/* Foto candidato */}
-          <div className="hidden lg:flex justify-end items-end h-[620px] lg:mr-0 xl:mr-4 mt-2 lg:mt-0">
-            <div className="relative h-full w-[17rem] xl:w-[19rem] overflow-hidden">
-              <img
-                src={fotoWiter}
-                alt="Prof. Winter Naves – Candidato a Governador do Tocantins"
-                className="h-full w-full object-cover object-top"
-              />
-            </div>
-            <div className="relative h-full w-[17rem] xl:w-[19rem] overflow-hidden">
-              <img
-                src={fotoChapa}
-                alt="Lúcia Viana – Candidata a Vice-governadora do Tocantins"
-                className="absolute -top-1/3 inset-x-0 h-[133%] w-full object-cover"
-                style={{ objectPosition: "82% 67%" }}
-              />
-            </div>
+          <div className="hidden lg:flex justify-end items-end lg:mr-0 xl:mr-4 mt-2 lg:mt-0">
+            <img
+              src={fotoWiter}
+              alt="Prof. Winter Naves – Candidato a Governador do Tocantins"
+              className="w-60 sm:w-80 lg:w-[30rem] xl:w-[34rem] max-h-[46svh] sm:max-h-[500px] lg:max-h-[620px] object-cover object-top"
+              style={{ maxHeight: "620px", objectPosition: "center top" }}
+            />
           </div>
         </div>
       </div>
