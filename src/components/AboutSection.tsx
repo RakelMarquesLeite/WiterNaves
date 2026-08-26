@@ -3,10 +3,10 @@ import fotoWiter2 from "@/imports/fotosobre.png"
 
 export default function AboutSection() {
   return (
-    <section id="sobre" className="bg-gray-900 py-14 sm:py-20 scroll-mt-16">
+    <section id="sobre" className="about-campaign bg-gray-900 scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-10 items-center">
-          <div>
+        <div className="grid grid-cols-1 items-stretch gap-0 lg:grid-cols-2">
+          <div className="py-14 sm:py-20 lg:pr-12">
             <span
               className="text-yellow-400 text-sm font-bold uppercase tracking-widest mb-3 block"
               style={{ fontFamily: "var(--font-display)" }}
@@ -23,7 +23,7 @@ export default function AboutSection() {
             >
               PROF. WITER
               <br />
-              <span className="text-yellow-400">NAVES</span>
+              <span className="text-[#ff9b25]">NAVES</span>
             </h2>
             <div className="space-y-4 text-gray-300 leading-relaxed">
               <p>
@@ -56,12 +56,11 @@ export default function AboutSection() {
             </cite>
           </div>
 
-          <div className="relative hidden lg:flex justify-end">
+          <div className="relative flex items-end justify-center self-end overflow-hidden pt-4 lg:justify-end lg:pt-0">
             <img
               src={fotoWiter2}
               alt="Prof. Winter Naves"
-          className="w-64 sm:w-80 lg:w-[30rem] xl:w-[34rem] max-h-[54svh] sm:max-h-[540px] lg:max-h-[650px] object-cover"
-              style={{ maxHeight: "650px", objectPosition: "center top" }}
+              className="block h-auto w-full max-w-[560px] object-contain object-bottom"
             />
           </div>
         </div>

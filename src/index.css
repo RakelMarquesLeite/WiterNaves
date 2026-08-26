@@ -11,13 +11,13 @@
 }
 
 :root {
-  --color-yellow: #f5c800;
-  --color-yellow-dark: #e0b400;
-  --color-red: #cc2200;
+  --color-yellow: #ffcf26;
+  --color-yellow-dark: #ff9b25;
+  --color-red: #ff692a;
   --color-blue: #1a3a8f;
-  --color-purple: #6b2fa0;
-  --color-dark: #111827;
-  --color-dark-card: #1e2535;
+  --color-purple: #5b1178;
+  --color-dark: #250431;
+  --color-dark-card: #3d0754;
   --font-display: 'Oswald', sans-serif;
   --font-body: 'Open Sans', sans-serif;
 }
@@ -39,6 +39,28 @@ body {
   margin: 0;
   overflow-x: hidden;
 }
+
+.campaign-hero {
+  background: linear-gradient(90deg, rgba(56, 4, 76, .98), rgba(83, 8, 105, .94) 56%, rgba(82, 4, 98, .8)), radial-gradient(circle at 75% 25%, #b0208d, #51066d 55%, #290438);
+}
+
+.campaign-hero::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  opacity: .18;
+  background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: linear-gradient(to right, transparent, black);
+}
+
+.campaign-glow { position: absolute; border-radius: 9999px; filter: blur(75px); opacity: .38; }
+.campaign-glow-one { width: 24rem; height: 24rem; right: -6rem; top: 8rem; background: #ff7a25; }
+.campaign-glow-two { width: 19rem; height: 19rem; left: -8rem; bottom: -5rem; background: #e61d52; }
+.campaign-button-primary { background: linear-gradient(180deg, #ffd32c, #ff9a25); color: #3d0754; box-shadow: 0 12px 30px rgba(255,137,30,.24); }
+.campaign-button-secondary { border: 2px solid rgba(255,255,255,.82); color: white; }
+.campaign-button-secondary:hover { background: white; color: #4c0b66; }
+.about-campaign { background: linear-gradient(135deg, #24032f, #3b074e 58%, #5b0c6f); }
 
 img {
   max-width: 100%;

@@ -1,6 +1,4 @@
 import React from "react"
-import logoPsol from "@/imports/logopsol (1).png"
-import logoRede from "@/imports/logorede.png"
 
 interface FooterProps {
   navLinks: { label: string; href: string }[]
@@ -14,29 +12,11 @@ export default function Footer({ navLinks, scrollTo, handleCopyrightClick }: Foo
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 mb-10">
       <div>
-        <div className="flex items-center gap-3 mb-4">
-          <img
-            src={logoPsol}
-            alt="PSOL"
-            className="h-8 w-auto object-contain"
-          />
-          <img
-            src={logoRede}
-            alt="REDE"
-            className="h-8 w-auto object-contain"
-          />
-          <span
-            className="text-yellow-400 font-black"
-            style={{
-              fontFamily: "var(--font-display)",
-              letterSpacing: "0.1em",
-            }}
-          >
-            PROF. WINTER NAVES
-          </span>
+        <div className="mb-4 flex items-center gap-3">
+          <img src="/logo-witer.png" alt="50 — Prof. Witer" className="h-20 w-40 object-contain object-left" />
         </div>
         <p className="text-gray-400 text-sm leading-relaxed">
-          Portal Oficial da Campanha do Prof. Winter Naves ao Governo do
+          Portal Oficial da Campanha do Prof. Witer Naves ao Governo do
           Tocantins 2026. PSOL + REDE Sustentabilidade.
         </p>
       </div>
@@ -106,7 +86,7 @@ export default function Footer({ navLinks, scrollTo, handleCopyrightClick }: Foo
         onClick={handleCopyrightClick}
         title=""
       >
-        © 2026 Portal Oficial – Prof. Winter Naves. Todos os direitos reservados.
+        © 2026 Portal Oficial – Prof. Witer Naves. Todos os direitos reservados.
       </p>
     </div>
   </div>

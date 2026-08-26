@@ -1,6 +1,4 @@
 import React from "react"
-import logoPsol from "@/imports/logopsol (1).png"
-import logoRede from "@/imports/logorede.png"
 import { NAV_LINKS } from "../data"
 
 interface NavbarProps {
@@ -12,16 +10,15 @@ interface NavbarProps {
 
 export default function Navbar({ menuOpen, setMenuOpen, activeSection, scrollTo }: NavbarProps) {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-950/95 backdrop-blur border-b border-yellow-400/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#3d0754]/95 backdrop-blur">
       <div className="max-w-7xl mx-auto px-1 sm:px-2 flex items-center justify-between h-16">
         <div className="flex items-center min-w-0">
-          <img src={logoPsol} alt="PSOL" className="h-14 sm:h-16 w-auto object-contain shrink-0" />
-          <img src={logoRede} alt="REDE Sustentabilidade" className="h-8 sm:h-9 w-auto object-contain -ml-1 shrink-0" />
+          <img src="/logo-witer.png" alt="Prof. Witer 50" className="h-14 w-24 object-contain object-left sm:h-16 sm:w-28" />
           <span
             className="text-yellow-400 font-bold text-xs sm:text-sm hidden sm:block ml-3 whitespace-nowrap"
             style={{ fontFamily: "var(--font-display)", letterSpacing: "0.05em" }}
           >
-            PROF. WINTER NAVES
+            PROF. WITER NAVES
           </span>
         </div>
 
