@@ -1,5 +1,7 @@
 import React from "react"
 
+const publicAsset = (file: string) => `${import.meta.env.BASE_URL}${file}`
+
 interface FooterProps {
   navLinks: { label: string; href: string }[]
   scrollTo: (href: string) => void
@@ -13,7 +15,7 @@ export default function Footer({ navLinks, scrollTo, handleCopyrightClick }: Foo
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 mb-10">
       <div>
         <div className="footer-logo-panel mb-4 flex w-fit items-center gap-3">
-          <img src="/logo-witer.png" alt="50 — Prof. Witer" className="relative z-10 h-20 w-40 object-contain object-left drop-shadow-[0_8px_20px_rgba(16,0,24,.2)]" />
+          <img src={publicAsset("logo-witer.png")} alt="50 — Prof. Witer" className="relative z-10 h-20 w-40 object-contain object-left drop-shadow-[0_8px_20px_rgba(16,0,24,.2)]" />
         </div>
         <p className="text-gray-400 text-sm leading-relaxed">
           Portal Oficial da Campanha do Prof. Witer Naves ao Governo do

@@ -1,6 +1,8 @@
 import React from "react"
 import { NAV_LINKS } from "../data"
 
+const publicAsset = (file: string) => `${import.meta.env.BASE_URL}${file}`
+
 interface NavbarProps {
   menuOpen: boolean
   setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -14,9 +16,9 @@ export default function Navbar({ menuOpen, setMenuOpen, activeSection, scrollTo 
       <div className="max-w-7xl mx-auto px-1 sm:px-2 flex items-center justify-between h-16">
         <div className="flex items-center min-w-0">
           <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[.06] px-2.5 py-1.5">
-            <img src="/logo-psol.png" alt="PSOL" className="h-8 w-8 object-contain sm:h-9 sm:w-9" />
+            <img src={publicAsset("logo-psol.png")} alt="PSOL" className="h-8 w-8 object-contain sm:h-9 sm:w-9" />
             <span className="h-6 w-px bg-white/15" aria-hidden="true" />
-            <img src="/logo-rede.png" alt="REDE Sustentabilidade" className="h-8 w-8 object-contain sm:h-9 sm:w-9" />
+            <img src={publicAsset("logo-rede.png")} alt="REDE Sustentabilidade" className="h-8 w-8 object-contain sm:h-9 sm:w-9" />
           </div>
           <span
             className="text-yellow-400 font-bold text-xs sm:text-sm hidden sm:block ml-3 whitespace-nowrap"
