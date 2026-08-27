@@ -10,10 +10,14 @@ interface NavbarProps {
 
 export default function Navbar({ menuOpen, setMenuOpen, activeSection, scrollTo }: NavbarProps) {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#3d0754]/95 backdrop-blur">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[#ffcf26]/20 bg-[#310440]/95 shadow-[0_10px_35px_rgba(20,0,28,.3)] backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-1 sm:px-2 flex items-center justify-between h-16">
         <div className="flex items-center min-w-0">
-          <img src="/logo-witer.png" alt="Prof. Witer 50" className="h-14 w-24 object-contain object-left sm:h-16 sm:w-28" />
+          <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[.06] px-2.5 py-1.5">
+            <img src="/logo-psol.png" alt="PSOL" className="h-8 w-8 object-contain sm:h-9 sm:w-9" />
+            <span className="h-6 w-px bg-white/15" aria-hidden="true" />
+            <img src="/logo-rede.png" alt="REDE Sustentabilidade" className="h-8 w-8 object-contain sm:h-9 sm:w-9" />
+          </div>
           <span
             className="text-yellow-400 font-bold text-xs sm:text-sm hidden sm:block ml-3 whitespace-nowrap"
             style={{ fontFamily: "var(--font-display)", letterSpacing: "0.05em" }}
@@ -53,12 +57,12 @@ export default function Navbar({ menuOpen, setMenuOpen, activeSection, scrollTo 
       </div>
 
       {menuOpen && (
-        <div className="lg:hidden bg-gray-950 border-t border-gray-800 px-4 py-4">
+        <div className="lg:hidden bg-[#310440] border-t border-white/10 px-4 py-4">
           {NAV_LINKS.map((link) => (
             <button
               key={`mob-${link.href}`}
               onClick={() => scrollTo(link.href)}
-              className="block w-full text-left py-2.5 text-gray-300 hover:text-yellow-400 border-b border-gray-800 last:border-0"
+              className="block w-full text-left py-2.5 text-white/80 hover:text-yellow-400 border-b border-white/10 last:border-0"
               style={{ fontFamily: "var(--font-display)", letterSpacing: "0.05em" }}
             >
               {link.label}

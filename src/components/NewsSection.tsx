@@ -5,7 +5,7 @@ interface NewsSectionProps { news: NewsItem[] }
 
 export default function NewsSection({ news }: NewsSectionProps) {
   return (
-<section id="noticias" className="bg-gray-900 py-14 sm:py-20 scroll-mt-16">
+<section id="noticias" className="campaign-section campaign-section-soft py-14 sm:py-20 scroll-mt-16">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-12">
       <span
@@ -29,9 +29,9 @@ export default function NewsSection({ news }: NewsSectionProps) {
       {news.map((n) => {
         const content = (
         <article
-          className="h-full bg-gray-950 border border-gray-800 hover:border-yellow-400/50 rounded-2xl overflow-hidden transition-colors group"
+          className="h-full bg-[#310440]/90 border border-white/10 hover:border-yellow-400/50 rounded-2xl overflow-hidden shadow-[0_16px_40px_rgba(20,0,28,.22)] transition-colors group"
         >
-          <div className="h-2 bg-gradient-to-r from-yellow-400 to-red-600" />
+          <div className="h-2 bg-gradient-to-r from-yellow-400 via-[#ff9b25] to-[#a52a91]" />
           <div className="p-6">
             <div className="flex items-center gap-3 mb-4">
               <span className="bg-yellow-400/10 text-yellow-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">

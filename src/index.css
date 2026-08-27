@@ -15,9 +15,9 @@
   --color-yellow-dark: #ff9b25;
   --color-red: #ff692a;
   --color-blue: #1a3a8f;
-  --color-purple: #5b1178;
-  --color-dark: #250431;
-  --color-dark-card: #3d0754;
+  --color-purple: #4b0c65;
+  --color-dark: #190220;
+  --color-dark-card: #300440;
   --font-display: 'Oswald', sans-serif;
   --font-body: 'Open Sans', sans-serif;
 }
@@ -40,8 +40,69 @@ body {
   overflow-x: hidden;
 }
 
+::selection {
+  background: var(--color-yellow);
+  color: var(--color-dark);
+}
+
+.campaign-section {
+  position: relative;
+  isolation: isolate;
+}
+
+.campaign-section::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+  opacity: .18;
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+}
+
+.campaign-section-deep {
+  background:
+    radial-gradient(circle at 12% 20%, rgba(145,32,128,.2), transparent 32rem),
+    linear-gradient(135deg, #16021e, #260332 58%, #350443);
+}
+
+.campaign-section-soft {
+  background:
+    radial-gradient(circle at 85% 15%, rgba(255,155,37,.12), transparent 28rem),
+    linear-gradient(135deg, #2b043a, #42084f 58%, #5b1257);
+}
+
+.campaign-section h2 {
+  text-shadow: 0 3px 20px rgba(15, 0, 22, .35);
+}
+
 .campaign-hero {
-  background: linear-gradient(90deg, rgba(56, 4, 76, .98), rgba(83, 8, 105, .94) 56%, rgba(82, 4, 98, .8)), radial-gradient(circle at 75% 25%, #b0208d, #51066d 55%, #290438);
+  background: linear-gradient(90deg, rgba(35, 2, 47, .99), rgba(65, 5, 82, .96) 56%, rgba(65, 4, 76, .88)), radial-gradient(circle at 75% 25%, #8d176f, #400453 55%, #1b0224);
+}
+
+.footer-logo-panel {
+  position: relative;
+  isolation: isolate;
+}
+
+.footer-logo-panel::before {
+  position: absolute;
+  z-index: 0;
+  width: 14rem;
+  height: 14rem;
+  left: .25rem;
+  top: 50%;
+  content: "";
+  pointer-events: none;
+  border-radius: 9999px;
+  background: #ffb56b;
+  opacity: .5;
+  filter: blur(58px);
+  transform: translateY(-50%);
 }
 
 .campaign-hero::after {
@@ -55,12 +116,13 @@ body {
 }
 
 .campaign-glow { position: absolute; border-radius: 9999px; filter: blur(75px); opacity: .38; }
-.campaign-glow-one { width: 24rem; height: 24rem; right: -6rem; top: 8rem; background: #ff7a25; }
+.campaign-glow-one { width: 24rem; height: 24rem; right: -6rem; top: 11rem; background: #ff7a25; }
+.campaign-glow-logo { width: 32rem; height: 32rem; left: 4rem; top: 1rem; background: #ff9b4a; opacity: .44; filter: blur(92px); }
 .campaign-glow-two { width: 19rem; height: 19rem; left: -8rem; bottom: -5rem; background: #e61d52; }
 .campaign-button-primary { background: linear-gradient(180deg, #ffd32c, #ff9a25); color: #3d0754; box-shadow: 0 12px 30px rgba(255,137,30,.24); }
 .campaign-button-secondary { border: 2px solid rgba(255,255,255,.82); color: white; }
 .campaign-button-secondary:hover { background: white; color: #4c0b66; }
-.about-campaign { background: linear-gradient(135deg, #24032f, #3b074e 58%, #5b0c6f); }
+.about-campaign { background: linear-gradient(135deg, #190220, #2e043c 58%, #450852); }
 
 img {
   max-width: 100%;

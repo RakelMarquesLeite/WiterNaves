@@ -81,14 +81,14 @@ export default function CandidatesSection() {
     setActive((current) => (current + direction + CANDIDATES.length) % CANDIDATES.length)
 
   return (
-    <section id="candidatos" className="bg-gray-950 py-14 sm:py-20 scroll-mt-16">
+    <section id="candidatos" className="campaign-section campaign-section-deep py-14 sm:py-20 scroll-mt-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <span className="text-yellow-400 text-sm font-bold uppercase tracking-widest">PSOL 50</span>
           <h2 className="text-white font-black text-3xl sm:text-5xl mt-2" style={{ fontFamily: "var(--font-display)" }}>
             NOSSOS CANDIDATOS
           </h2>
-          <p className="text-gray-400 mt-3">Clique na foto ou na apresentação para conhecer cada candidatura.</p>
+          <p className="text-white/70 mt-3">Clique na foto ou na apresentação para conhecer cada candidatura.</p>
         </div>
 
         <div
@@ -102,15 +102,18 @@ export default function CandidatesSection() {
           }}
         >
           <button onClick={() => move(-1)} aria-label="Candidato anterior" className="hidden lg:flex w-12 h-12 rounded-full border border-gray-700 hover:border-yellow-400 items-center justify-center text-2xl text-white">‹</button>
-          <button onClick={() => setSelected(candidate)} className="relative text-left grid md:grid-cols-[minmax(260px,420px)_1fr] overflow-hidden rounded-3xl bg-gray-900 border border-gray-800 hover:border-yellow-400/60 transition-colors group">
+          <button onClick={() => setSelected(candidate)} className="relative text-left grid md:grid-cols-[minmax(260px,420px)_1fr] overflow-hidden rounded-3xl bg-[#3d0754] border border-white/10 hover:border-yellow-400/60 shadow-[0_24px_70px_rgba(20,0,28,.35)] transition-colors group">
             <img src={candidate.image} alt={candidate.name} className="w-full h-80 md:h-[430px] object-cover" style={{ objectPosition: candidate.imagePosition }} />
             <span className="p-7 sm:p-10 flex flex-col justify-center">
-              <span className="text-red-500 font-bold uppercase tracking-widest text-sm">{candidate.role}</span>
+              <span className="text-[#ffb52b] font-bold uppercase tracking-widest text-sm">{candidate.role}</span>
               <span className="text-white font-black text-3xl sm:text-5xl mt-2 mb-5 group-hover:text-yellow-400 transition-colors" style={{ fontFamily: "var(--font-display)" }}>{candidate.name}</span>
               <span className="text-gray-300 leading-relaxed">{candidate.brief}</span>
               <span className="text-yellow-400 font-bold mt-7">Ver detalhes →</span>
             </span>
-            <span className="absolute bottom-4 right-5 text-yellow-400 font-black text-5xl sm:text-6xl leading-none drop-shadow-lg" style={{ fontFamily: "var(--font-display)" }} aria-label={`Número do candidato: ${candidate.number}`}>{candidate.number}</span>
+            <span className="absolute bottom-4 right-5 flex flex-col items-end text-yellow-400 drop-shadow-lg" aria-label={`Vote ${candidate.number}`}>
+              <span className="mb-0.5 rounded-full bg-[#250431]/80 px-2 py-1 text-[10px] font-black uppercase tracking-[0.22em] text-white">Vote</span>
+              <span className="font-black text-5xl sm:text-6xl leading-none" style={{ fontFamily: "var(--font-display)" }}>{candidate.number}</span>
+            </span>
           </button>
           <button onClick={() => move(1)} aria-label="Próximo candidato" className="hidden lg:flex w-12 h-12 rounded-full border border-gray-700 hover:border-yellow-400 items-center justify-center text-2xl text-white">›</button>
         </div>
@@ -126,11 +129,11 @@ export default function CandidatesSection() {
 
       {selected && (
         <div className="fixed inset-0 z-[150] bg-black/90 backdrop-blur-sm p-4 flex items-center justify-center" onClick={(event) => event.target === event.currentTarget && setSelected(null)}>
-          <article className="relative max-w-2xl w-full rounded-3xl bg-gray-900 border border-gray-700 p-7 sm:p-10 shadow-2xl">
+          <article className="relative max-w-2xl w-full rounded-3xl bg-[#3d0754] border border-yellow-400/20 p-7 sm:p-10 shadow-2xl">
             <button onClick={() => setSelected(null)} aria-label="Fechar detalhes" className="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-800 text-white text-xl">×</button>
-            <span className="text-red-500 font-bold uppercase tracking-widest text-sm">{selected.role}</span>
+            <span className="text-[#ffb52b] font-bold uppercase tracking-widest text-sm">{selected.role}</span>
             <h3 className="text-white font-black text-3xl sm:text-4xl mt-2 mb-5 pr-10" style={{ fontFamily: "var(--font-display)" }}>{selected.name}</h3>
-            <p className="text-yellow-400 font-black text-4xl mb-5" style={{ fontFamily: "var(--font-display)" }}>{selected.number}</p>
+            <p className="text-yellow-400 font-black text-4xl mb-5" style={{ fontFamily: "var(--font-display)" }}><span className="block text-[11px] uppercase tracking-[0.22em] text-white/80">Vote</span>{selected.number}</p>
             <p className="text-gray-300 leading-relaxed">{selected.details}</p>
             <button onClick={() => setSelected(null)} className="mt-7 bg-yellow-400 hover:bg-yellow-300 text-gray-950 font-black px-6 py-3 rounded-xl">FECHAR</button>
           </article>

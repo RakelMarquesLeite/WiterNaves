@@ -8,12 +8,12 @@ interface FooterProps {
 
 export default function Footer({ navLinks, scrollTo, handleCopyrightClick }: FooterProps) {
   return (
-<footer className="bg-gray-950 border-t border-gray-800 py-10 sm:py-12">
+<footer className="bg-[#250431] border-t border-yellow-400/15 py-10 sm:py-12 overflow-hidden">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 mb-10">
       <div>
-        <div className="mb-4 flex items-center gap-3">
-          <img src="/logo-witer.png" alt="50 — Prof. Witer" className="h-20 w-40 object-contain object-left" />
+        <div className="footer-logo-panel mb-4 flex w-fit items-center gap-3">
+          <img src="/logo-witer.png" alt="50 — Prof. Witer" className="relative z-10 h-20 w-40 object-contain object-left drop-shadow-[0_8px_20px_rgba(16,0,24,.2)]" />
         </div>
         <p className="text-gray-400 text-sm leading-relaxed">
           Portal Oficial da Campanha do Prof. Witer Naves ao Governo do

@@ -10,7 +10,7 @@ export default function PlanSection({ shareOrCopy }: PlanSectionProps) {
   className="py-14 sm:py-20 relative overflow-hidden scroll-mt-16"
   style={{
     background:
-      "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+      "linear-gradient(135deg, #250431 0%, #4c0b66 55%, #8f237d 100%)",
   }}
 >
   <div
@@ -22,7 +22,7 @@ export default function PlanSection({ shareOrCopy }: PlanSectionProps) {
     }}
   />
   <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-red-700 rounded-2xl flex items-center justify-center text-4xl mx-auto mb-8">
+    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#ffcf26] text-[#3d0754] rounded-2xl flex items-center justify-center text-4xl mx-auto mb-8 shadow-[0_12px_35px_rgba(255,207,38,.2)]">
       📑
     </div>
     <h2
@@ -44,7 +44,7 @@ export default function PlanSection({ shareOrCopy }: PlanSectionProps) {
       <a
         href={planoPdf}
         download="Plano-de-Governo-Witer-Naves.pdf"
-        className="w-full sm:w-auto bg-red-700 hover:bg-red-600 text-white font-black px-6 sm:px-10 py-4 rounded-xl text-base sm:text-lg transition-colors flex items-center justify-center gap-3"
+        className="campaign-button-primary w-full sm:w-auto font-black px-6 sm:px-10 py-4 rounded-xl text-base sm:text-lg transition-transform hover:-translate-y-0.5 flex items-center justify-center gap-3"
         style={{
           fontFamily: "var(--font-display)",
           letterSpacing: "0.05em",

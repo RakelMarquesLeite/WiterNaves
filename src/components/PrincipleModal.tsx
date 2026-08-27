@@ -33,7 +33,7 @@ export default function PrincipleModal({
     >
       <div
         className="relative w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl"
-        style={{ background: "#1a1a1a" }}
+        style={{ background: "#250431" }}
       >
         {/* Header colorido */}
         <div
@@ -124,8 +124,8 @@ export default function PrincipleModal({
             download="Plano-de-Governo-Witer-Naves.pdf"
             className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-black text-sm tracking-wide transition-opacity hover:opacity-80"
             style={{
-              background: "#D62828",
-              color: "#fff",
+              background: "linear-gradient(180deg, #ffd32c, #ff9a25)",
+              color: "#3d0754",
               fontFamily: "var(--font-display)",
             }}
           >

@@ -14,7 +14,7 @@ export default function PrinciplesSection({
   return (
     <section
       id="principios"
-      className="bg-gray-950 py-14 sm:py-20 scroll-mt-16"
+      className="campaign-section campaign-section-deep py-14 sm:py-20 scroll-mt-16"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2
@@ -65,10 +65,10 @@ export default function PrinciplesSection({
           ))}
 
           {/* PDF Download Card */}
-          <div className="bg-gray-900 border border-gray-700 rounded-2xl p-6 flex flex-col items-center gap-4">
+          <div className="bg-[#3d0754] border border-yellow-400/20 rounded-2xl p-6 flex flex-col items-center gap-4 shadow-[0_18px_45px_rgba(20,0,28,.25)]">
             <div className="flex items-center justify-center gap-3">
               <div
-                className="w-3 h-3 rounded-full bg-red-600 shrink-0"
+                className="w-3 h-3 rounded-full bg-yellow-400 shrink-0 shadow-[0_0_14px_rgba(255,207,38,.7)]"
                 aria-hidden="true"
               />
               <h3
@@ -89,7 +89,7 @@ export default function PrinciplesSection({
             <a
               href={planoPdf}
               download="Plano-de-Governo-Witer-Naves.pdf"
-              className="w-full bg-red-700 hover:bg-red-600 text-white font-bold py-2.5 px-4 rounded-lg text-sm transition-colors flex items-center justify-center gap-2"
+              className="campaign-button-primary w-full font-bold py-2.5 px-4 rounded-lg text-sm transition-transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
               style={{
                 fontFamily: "var(--font-display)",
                 letterSpacing: "0.05em",

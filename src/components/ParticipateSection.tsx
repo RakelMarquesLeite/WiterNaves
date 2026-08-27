@@ -34,7 +34,7 @@ export default function ParticipateSection({
   }
 
   return (
-    <section id="participe" className="bg-gray-950 py-14 sm:py-20 scroll-mt-16">
+    <section id="participe" className="campaign-section campaign-section-soft py-14 sm:py-20 scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           <div>
@@ -129,7 +129,7 @@ export default function ParticipateSection({
             ) : (
               <form
                 onSubmit={onSubmit}
-                className="bg-gray-900 border border-gray-800 rounded-2xl p-4 sm:p-6 space-y-4"
+                className="bg-[#3d0754]/90 border border-white/10 rounded-2xl p-4 sm:p-6 space-y-4 shadow-[0_20px_55px_rgba(20,0,28,.28)]"
               >
                 <div>
                   <label className="block text-gray-400 text-sm font-semibold mb-2">
@@ -143,7 +143,7 @@ export default function ParticipateSection({
                     onChange={(e) =>
                       setFormData((v) => ({ ...v, nome: e.target.value }))
                     }
-                    className="w-full bg-gray-800 border border-gray-700 focus:border-yellow-400 text-white rounded-lg px-4 py-3 outline-none transition-colors text-sm"
+                    className="w-full bg-[#250431] border border-white/15 focus:border-yellow-400 text-white rounded-lg px-4 py-3 outline-none transition-colors text-sm"
                     placeholder="Seu nome"
                   />
                 </div>
@@ -158,7 +158,7 @@ export default function ParticipateSection({
                     onChange={(e) =>
                       setFormData((v) => ({ ...v, email: e.target.value }))
                     }
-                    className="w-full bg-gray-800 border border-gray-700 focus:border-yellow-400 text-white rounded-lg px-4 py-3 outline-none transition-colors text-sm"
+                    className="w-full bg-[#250431] border border-white/15 focus:border-yellow-400 text-white rounded-lg px-4 py-3 outline-none transition-colors text-sm"
                     placeholder="seu@email.com"
                   />
                 </div>
@@ -171,7 +171,7 @@ export default function ParticipateSection({
                     rows={5}
                     value={formData.mensagem}
                     onChange={(e) => updateMessage(e.target.value)}
-                    className="w-full bg-gray-800 border border-gray-700 focus:border-yellow-400 text-white rounded-lg px-4 py-3 outline-none transition-colors text-sm resize-none"
+                    className="w-full bg-[#250431] border border-white/15 focus:border-yellow-400 text-white rounded-lg px-4 py-3 outline-none transition-colors text-sm resize-none"
                     placeholder="Escreva sua sugestão..."
                   />
                   <p className="mt-2 text-right text-xs text-gray-500">

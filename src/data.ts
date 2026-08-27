@@ -83,8 +83,8 @@ export const PROPOSALS = [
 export const PRINCIPLES_DETAIL = [
   {
     id: "direito",
-    color: "#D62828",
-    bg: "bg-red-700",
+    color: "#8f238f",
+    bg: "bg-gradient-to-br from-[#8f238f] to-[#5b1178]",
     icon: "🤝",
     title: "O DIREITO DA GENTE",
     tagline: "Garantir direitos é garantir dignidade.",
@@ -146,8 +146,8 @@ export const PRINCIPLES_DETAIL = [
   },
   {
     id: "bem-estar",
-    color: "#1E5AA8",
-    bg: "bg-blue-800",
+    color: "#6f1688",
+    bg: "bg-gradient-to-br from-[#761b91] to-[#4c0b66]",
     icon: "🌱",
     title: "O BEM-ESTAR DA GENTE",
     tagline:
@@ -210,8 +210,8 @@ export const PRINCIPLES_DETAIL = [
   },
   {
     id: "bem-querer",
-    color: "#7B3FE4",
-    bg: "bg-purple-800",
+    color: "#a52a91",
+    bg: "bg-gradient-to-br from-[#a52a91] to-[#64126f]",
     icon: "💬",
     title: "O BEM-QUERER DA GENTE",
     tagline: "Governar é ouvir, dialogar e construir junto.",
