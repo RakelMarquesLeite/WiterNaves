@@ -15,10 +15,10 @@ export default function AboutSection() {
               Quem é
             </span>
             <h2
-              className="whitespace-nowrap text-white font-black mb-6"
+              className="text-white font-black mb-6 sm:whitespace-nowrap"
               style={{
                 fontFamily: "var(--font-display)",
-                fontSize: "clamp(2.35rem, 5.5vw, 4.25rem)",
+                fontSize: "clamp(2.05rem, 5.5vw, 4.25rem)",
                 lineHeight: 1.1,
               }}
             >
