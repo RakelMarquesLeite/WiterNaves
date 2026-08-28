@@ -20,9 +20,9 @@ export default function Hero({ scrollTo }: HeroProps) {
           </div>
           <p className="mb-3 text-sm font-black uppercase tracking-[0.24em] text-[#ff9b25]">Tocantins pode mais</p>
           <h1 className="max-w-2xl text-4xl font-black uppercase leading-[0.94] text-white sm:text-5xl xl:text-[3.35rem]" style={{ fontFamily: "var(--font-display)" }}>
-            Um governo que olha primeiro para as pessoas
+            O TOCANTINS DE TODA NOSSA GENTE
           </h1>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">Uma candidatura construída com educação, participação popular e compromisso com um Tocantins mais justo.</p>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">Pelo direito da Gente, pelo Bem-estar da Gente e pelo Bem-querer da Gente Tocantinense </p>
           <div className="mt-5 flex flex-col gap-3 sm:flex-row">
             <button onClick={() => scrollTo("#principios")} className="campaign-button-primary rounded-lg px-6 py-3 font-black tracking-wide transition-transform hover:-translate-y-0.5">CONHEÇA AS PROPOSTAS →</button>
             <a href={planoPdf} download="Plano-de-Governo-Witer-Naves.pdf" className="campaign-button-secondary rounded-lg px-6 py-3 text-center font-black tracking-wide transition-colors">BAIXAR PLANO (PDF)</a>
