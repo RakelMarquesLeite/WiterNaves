@@ -126,7 +126,7 @@ export default function App() {
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} activeSection={activeSection} scrollTo={scrollTo} />
       <main>
         <Hero scrollTo={scrollTo} />
-        <PrinciplesSection onSelectPrinciple={setActivePrinciple} shareOrCopy={shareOrCopy} />
+        <PrinciplesSection onSelectPrinciple={setActivePrinciple} />
         <AboutSection />
         <ProposalsSection />
         <PlanSection shareOrCopy={shareOrCopy} />

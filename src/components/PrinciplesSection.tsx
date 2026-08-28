@@ -1,15 +1,12 @@
 import React from "react"
-import planoPdf from "@/imports/ITEM_7._PLANO_DE_GOVERNO_REDE_PSOL_MELHORADO.pdf"
 import { PRINCIPLES_DETAIL } from "../data"
 
 interface PrinciplesSectionProps {
   onSelectPrinciple: (principle: typeof PRINCIPLES_DETAIL[number]) => void
-  shareOrCopy: () => void
 }
 
 export default function PrinciplesSection({
   onSelectPrinciple,
-  shareOrCopy,
 }: PrinciplesSectionProps) {
   return (
     <section
@@ -29,7 +26,7 @@ export default function PrinciplesSection({
           GOVERNANÇA
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {PRINCIPLES_DETAIL.map((p) => (
             <div
               key={p.id}
@@ -64,46 +61,6 @@ export default function PrinciplesSection({
             </div>
           ))}
 
-          {/* PDF Download Card */}
-          <div className="bg-[#3d0754] border border-yellow-400/20 rounded-2xl p-6 flex flex-col items-center gap-4 shadow-[0_18px_45px_rgba(20,0,28,.25)]">
-            <div className="flex items-center justify-center gap-3">
-              <div
-                className="w-3 h-3 rounded-full bg-yellow-400 shrink-0 shadow-[0_0_14px_rgba(255,207,38,.7)]"
-                aria-hidden="true"
-              />
-              <h3
-                className="text-white font-black text-center"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "1.05rem",
-                  letterSpacing: "0.03em",
-                }}
-              >
-                BAIXE O PLANO DE GOVERNO COMPLETO
-              </h3>
-            </div>
-            <p className="text-gray-400 text-sm text-center leading-relaxed">
-              Conheça todas as propostas, programas e ações para transformar o
-              Tocantins.
-            </p>
-            <a
-              href={planoPdf}
-              download="Plano-de-Governo-Witer-Naves.pdf"
-              className="campaign-button-primary w-full font-bold py-2.5 px-4 rounded-lg text-sm transition-transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
-              style={{
-                fontFamily: "var(--font-display)",
-                letterSpacing: "0.05em",
-              }}
-            >
-              ↓ BAIXAR PLANO (PDF)
-            </a>
-            <button
-              onClick={shareOrCopy}
-              className="w-full border border-gray-600 hover:border-gray-400 text-white font-bold py-2.5 px-4 rounded-lg text-sm transition-colors flex items-center justify-center gap-2"
-            >
-              ⬡ COMPARTILHAR
-            </button>
-          </div>
         </div>
       </div>
     </section>

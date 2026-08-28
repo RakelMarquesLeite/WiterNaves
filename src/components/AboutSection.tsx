@@ -1,4 +1,5 @@
 import React from "react"
+import fotoWiterELucia from "@/imports/witer-e-lucia.png"
 import fotoWiter2 from "@/imports/fotosobre.png"
 
 export default function AboutSection() {
@@ -14,16 +15,14 @@ export default function AboutSection() {
               Quem é
             </span>
             <h2
-              className="text-white font-black mb-6"
+              className="whitespace-nowrap text-white font-black mb-6"
               style={{
                 fontFamily: "var(--font-display)",
-                fontSize: "clamp(2rem, 5vw, 3.5rem)",
+                fontSize: "clamp(2.35rem, 5.5vw, 4.25rem)",
                 lineHeight: 1.1,
               }}
             >
-              PROF. WITER
-              <br />
-              <span className="text-[#ff9b25]">NAVES</span>
+              PROF. WITER NAVES
             </h2>
             <div className="space-y-4 text-gray-300 leading-relaxed">
               <p>
@@ -57,11 +56,18 @@ export default function AboutSection() {
           </div>
 
           <div className="relative flex items-end justify-center self-end overflow-hidden pt-4 lg:justify-end lg:pt-0">
-            <img
-              src={fotoWiter2}
-              alt="Prof. Winter Naves"
-              className="block h-auto w-full max-w-[560px] object-contain object-bottom"
-            />
+            <div className="flex w-full max-w-[820px] items-end justify-center lg:justify-end">
+              <img
+                src={fotoWiterELucia}
+                alt="Prof. Winter Naves e Dra. Lucia Viana"
+                className="relative z-20 block h-auto w-[142%] max-w-none shrink-0 object-contain object-bottom lg:hidden"
+              />
+              <img
+                src={fotoWiter2}
+                alt="Prof. Winter Naves"
+                className="relative z-20 hidden h-auto w-full max-w-[620px] object-contain object-bottom lg:block"
+              />
+            </div>
           </div>
         </div>
       </div>

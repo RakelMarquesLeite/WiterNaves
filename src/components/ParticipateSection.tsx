@@ -1,4 +1,6 @@
 import React from "react"
+import instagramLogo from "@/imports/instagram-oficial.jpeg"
+import youtubeLogo from "@/imports/youtube-oficial.webp"
 
 interface ParticipateSectionProps {
   formSent: boolean
@@ -85,21 +87,18 @@ export default function ParticipateSection({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
-                  className="w-11 h-11 rounded-full flex items-center justify-center text-white text-lg transition-opacity hover:opacity-80"
-                  style={{
-                    background: "linear-gradient(135deg, #e1306c, #f77737)",
-                  }}
+                  className="w-11 h-11 overflow-hidden rounded-full flex items-center justify-center transition-opacity hover:opacity-80"
                 >
-                  📷
+                  <img src={instagramLogo} alt="" className="h-full w-full scale-110 object-cover" />
                 </a>
                 <a
                   href="https://www.youtube.com/@PSOL50oficial"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="YouTube"
-                  className="w-11 h-11 rounded-full flex items-center justify-center text-white text-lg transition-opacity hover:opacity-80 bg-red-700"
+                  className="w-11 h-11 overflow-hidden rounded-full flex items-center justify-center bg-black transition-opacity hover:opacity-80"
                 >
-                  ▶
+                  <img src={youtubeLogo} alt="" className="h-full w-full scale-[1.65] object-cover" />
                 </a>
               </div>
             </div>

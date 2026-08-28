@@ -81,7 +81,7 @@ body {
 }
 
 .campaign-hero {
-  background: linear-gradient(90deg, rgba(35, 2, 47, .99), rgba(65, 5, 82, .96) 56%, rgba(65, 4, 76, .88)), radial-gradient(circle at 75% 25%, #8d176f, #400453 55%, #1b0224);
+  background: linear-gradient(90deg, rgba(35, 2, 47, .99), rgba(65, 5, 82, .96) 56%, rgba(65, 4, 76, .88)), radial-gradient(circle at 75% 25%, #5a0d53, #350343 55%, #16021e);
 }
 
 .footer-logo-panel {

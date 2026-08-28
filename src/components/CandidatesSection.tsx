@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import fotoWiter from "@/imports/foto.png"
+import fotoWiter from "@/imports/witer-candidato.jpeg"
 import fotoLucia from "@/imports/lucia.jpeg"
 import fotoAngelica from "@/imports/angelica.webp"
 import fotoZaira from "@/imports/zaira.webp"
@@ -12,7 +12,7 @@ const CANDIDATES = [
     role: "Candidato a governador",
     number: "50",
     image: fotoWiter,
-    imagePosition: "center top",
+    imagePosition: "center center",
     brief: "Professor e defensor de uma gestão pública democrática, próxima e comprometida com os direitos do povo tocantinense.",
     details: "Prof. Winter Naves encabeça a candidatura ao Governo do Tocantins pela Federação PSOL REDE. Sua proposta está organizada em três princípios: o Direito da Gente, o Bem-estar da Gente e o Bem-querer da Gente, reunindo participação popular, desenvolvimento sustentável e garantia de direitos.",
   },
