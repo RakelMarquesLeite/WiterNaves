@@ -8,13 +8,13 @@ import fotoClaudia from "@/imports/claudia.webp"
 
 const CANDIDATES = [
   {
-    name: "Prof. Winter Naves",
+    name: "Prof. Witer Naves",
     role: "Candidato a governador",
     number: "50",
     image: fotoWiter,
     imagePosition: "center center",
     brief: "Professor e defensor de uma gestão pública democrática, próxima e comprometida com os direitos do povo tocantinense.",
-    details: "Prof. Winter Naves encabeça a candidatura ao Governo do Tocantins pela Federação PSOL REDE. Sua proposta está organizada em três princípios: o Direito da Gente, o Bem-estar da Gente e o Bem-querer da Gente, reunindo participação popular, desenvolvimento sustentável e garantia de direitos.",
+    details: "Prof. Witer Naves encabeça a candidatura ao Governo do Tocantins pela Federação PSOL REDE. Sua proposta está organizada em três princípios: o Direito da Gente, o Bem-estar da Gente e o Bem-querer da Gente, reunindo participação popular, desenvolvimento sustentável e garantia de direitos.",
   },
   {
     name: "Lúcia Viana",
