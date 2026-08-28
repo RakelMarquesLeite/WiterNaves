@@ -15,7 +15,7 @@ export default function Footer({ navLinks, scrollTo, handleCopyrightClick }: Foo
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 mb-10">
       <div>
-        <div className="footer-logo-panel mb-4 flex w-fit items-center gap-3">
+        <div className="mb-4 flex w-fit items-center gap-3">
           <img src={logoBranco} alt="50 — Prof. Witer" className="relative z-10 h-20 w-40 object-contain object-left drop-shadow-[0_8px_20px_rgba(16,0,24,.2)]" />
         </div>
         <p className="text-gray-400 text-sm leading-relaxed">
@@ -31,13 +31,13 @@ export default function Footer({ navLinks, scrollTo, handleCopyrightClick }: Foo
         >
           Siga Nossas Redes
         </h4>
-        <div className="flex gap-3">
+        <div className="flex items-center gap-4">
           <a
             href="https://www.instagram.com/profwiternaves"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
-            className="w-11 h-11 overflow-hidden rounded-full flex items-center justify-center transition-opacity hover:opacity-80"
+            className="w-11 h-11 overflow-hidden rounded-full flex items-center justify-center transition-transform hover:scale-105"
           >
             <img src={instagramLogo} alt="" className="h-full w-full scale-110 object-cover" />
           </a>
@@ -46,9 +46,9 @@ export default function Footer({ navLinks, scrollTo, handleCopyrightClick }: Foo
             target="_blank"
             rel="noopener noreferrer"
             aria-label="YouTube"
-            className="w-11 h-11 overflow-hidden rounded-full bg-black flex items-center justify-center transition-opacity hover:opacity-80"
+            className="w-11 h-11 overflow-hidden rounded-full bg-black flex items-center justify-center transition-transform hover:scale-105"
           >
-            <img src={youtubeLogo} alt="" className="h-full w-full scale-[1.65] object-cover" />
+            <img src={youtubeLogo} alt="" className="h-full w-full scale-[1.42] object-cover" />
           </a>
         </div>
       </div>

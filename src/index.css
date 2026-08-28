@@ -84,27 +84,6 @@ body {
   background: linear-gradient(90deg, rgba(35, 2, 47, .99), rgba(65, 5, 82, .96) 56%, rgba(65, 4, 76, .88)), radial-gradient(circle at 75% 25%, #5a0d53, #350343 55%, #16021e);
 }
 
-.footer-logo-panel {
-  position: relative;
-  isolation: isolate;
-}
-
-.footer-logo-panel::before {
-  position: absolute;
-  z-index: 0;
-  width: 14rem;
-  height: 14rem;
-  left: .25rem;
-  top: 50%;
-  content: "";
-  pointer-events: none;
-  border-radius: 9999px;
-  background: #ffb56b;
-  opacity: .5;
-  filter: blur(58px);
-  transform: translateY(-50%);
-}
-
 .campaign-hero::after {
   position: absolute;
   inset: 0;
@@ -119,10 +98,37 @@ body {
 .campaign-glow-one { width: 24rem; height: 24rem; right: -6rem; top: 11rem; background: #ff7a25; }
 .campaign-glow-logo { width: 32rem; height: 32rem; left: 4rem; top: 1rem; background: #ff9b4a; opacity: .44; filter: blur(92px); }
 .campaign-glow-two { width: 19rem; height: 19rem; left: -8rem; bottom: -5rem; background: #e61d52; }
+
+@media (max-width: 639px) {
+  .campaign-glow { filter: blur(48px); opacity: .18; }
+  .campaign-glow-one { width: 12rem; height: 12rem; right: -5rem; top: 9rem; }
+  .campaign-glow-logo { width: 15rem; height: 15rem; left: -3rem; top: 2rem; opacity: .2; filter: blur(55px); }
+  .campaign-glow-two { width: 10rem; height: 10rem; left: -5rem; bottom: -2rem; }
+}
 .campaign-button-primary { background: linear-gradient(180deg, #ffd32c, #ff9a25); color: #3d0754; box-shadow: 0 12px 30px rgba(255,137,30,.24); }
 .campaign-button-secondary { border: 2px solid rgba(255,255,255,.82); color: white; }
 .campaign-button-secondary:hover { background: white; color: #4c0b66; }
 .about-campaign { background: linear-gradient(135deg, #190220, #2e043c 58%, #450852); }
+
+/* Encerra a foto conjunta na altura visual dos dois candidatos. */
+.candidate-pair-crop {
+  aspect-ratio: 2057 / 2100;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .about-desktop-portrait {
+    height: clamp(850px, 72vw, 1080px);
+    transform: translateY(-78px) scale(1.36) !important;
+    transform-origin: top right;
+  }
+}
+
+@media (min-width: 1280px) {
+  .about-desktop-portrait {
+    transform: translateY(-92px) scale(1.42) !important;
+  }
+}
 
 img {
   max-width: 100%;

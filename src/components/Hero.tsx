@@ -1,6 +1,5 @@
 import React from "react"
 import fotoWiterELucia from "@/imports/witer-e-lucia.png"
-import fotoWiter from "@/imports/foto.png"
 import logoBranco from "@/imports/logo-branco.png"
 import planoPdf from "@/imports/ITEM_7._PLANO_DE_GOVERNO_REDE_PSOL_MELHORADO.pdf"
 
@@ -14,7 +13,7 @@ export default function Hero({ scrollTo }: HeroProps) {
       <div className="campaign-glow campaign-glow-one" />
       <div className="campaign-glow campaign-glow-logo" />
       <div className="campaign-glow campaign-glow-two" />
-      <div className="relative z-10 mx-auto grid min-h-[calc(100svh-4rem)] max-w-7xl grid-cols-1 items-end px-4 sm:px-6 lg:h-[calc(100svh-4rem)] lg:min-h-[600px] lg:grid-cols-[0.92fr_1.08fr] lg:px-8">
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-end px-4 sm:px-6 lg:min-h-[max(600px,calc(100svh-4rem))] lg:grid-cols-[0.92fr_1.08fr] lg:px-8">
         <div className="z-20 pb-8 pt-8 sm:pb-10 lg:pb-10 lg:pt-8">
           <div className="mb-5 w-full max-w-[430px]">
             <img src={logoBranco} alt="50 — Governador Prof. Witer, vice Dra. Lucia Viana" className="relative z-10 w-full drop-shadow-[0_10px_24px_rgba(16,0,24,.2)]" />
@@ -29,10 +28,11 @@ export default function Hero({ scrollTo }: HeroProps) {
             <a href={planoPdf} download="Plano-de-Governo-Witer-Naves.pdf" className="campaign-button-secondary rounded-lg px-6 py-3 text-center font-black tracking-wide transition-colors">BAIXAR PLANO (PDF)</a>
           </div>
         </div>
-        <div className="relative flex h-full min-h-[360px] items-end justify-center lg:min-h-0 lg:justify-end">
+        <div className="relative hidden h-full min-h-[360px] items-end justify-center lg:flex lg:min-h-0 lg:justify-end">
           <div className="flex h-full w-full max-w-[980px] items-end justify-center lg:translate-x-16 lg:justify-end xl:translate-x-24">
-            <img src={fotoWiter} alt="Prof. Witer Naves" className="relative z-20 block max-h-full w-full max-w-[680px] object-contain object-bottom lg:hidden" />
-            <img src={fotoWiterELucia} alt="Prof. Witer Naves e Dra. Lucia Viana" className="relative z-20 hidden max-h-full w-full max-w-[980px] object-contain object-bottom lg:block" />
+            <div className="candidate-pair-crop hidden w-[106%] max-w-none shrink-0 lg:block xl:w-[110%]">
+              <img src={fotoWiterELucia} alt="Prof. Witer Naves e Dra. Lucia Viana" className="relative z-20 block h-auto w-full" />
+            </div>
           </div>
           <div className="absolute bottom-5 right-0 z-20 flex items-center gap-3 rounded-xl bg-[#4c0b66]/90 px-4 py-3 shadow-2xl backdrop-blur sm:bottom-8">
             <span className="text-xs font-bold uppercase tracking-widest text-white/70">Federação</span>

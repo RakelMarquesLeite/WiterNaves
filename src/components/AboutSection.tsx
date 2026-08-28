@@ -7,7 +7,7 @@ export default function AboutSection() {
     <section id="sobre" className="about-campaign bg-gray-900 scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-stretch gap-0 lg:grid-cols-2">
-          <div className="py-14 sm:py-20 lg:pr-12">
+          <div className="py-14 sm:py-20 lg:py-10 lg:pr-12">
             <span
               className="text-yellow-400 text-sm font-bold uppercase tracking-widest mb-3 block"
               style={{ fontFamily: "var(--font-display)" }}
@@ -55,17 +55,19 @@ export default function AboutSection() {
             </cite>
           </div>
 
-          <div className="relative flex items-end justify-center self-end overflow-hidden pt-4 lg:justify-end lg:pt-0">
-            <div className="flex w-full max-w-[820px] items-end justify-center lg:justify-end">
-              <img
-                src={fotoWiterELucia}
-                alt="Prof. Winter Naves e Dra. Lucia Viana"
-                className="relative z-20 block h-auto w-[142%] max-w-none shrink-0 object-contain object-bottom lg:hidden"
-              />
+          <div className="relative flex items-end justify-center self-end overflow-hidden pt-4 lg:h-full lg:justify-end lg:pt-0">
+            <div className="flex w-full max-w-[820px] items-end justify-center lg:h-full lg:justify-end">
+              <div className="candidate-pair-crop w-[112%] max-w-none shrink-0 lg:hidden">
+                <img
+                  src={fotoWiterELucia}
+                  alt="Prof. Winter Naves e Dra. Lucia Viana"
+                  className="relative z-20 block h-auto w-full"
+                />
+              </div>
               <img
                 src={fotoWiter2}
                 alt="Prof. Winter Naves"
-                className="relative z-20 hidden h-auto w-full max-w-[620px] object-contain object-bottom lg:block"
+                className="about-desktop-portrait absolute right-0 top-0 z-20 hidden w-auto max-w-none object-contain object-top lg:block"
               />
             </div>
           </div>
