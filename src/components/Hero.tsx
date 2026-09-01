@@ -36,8 +36,8 @@ export default function Hero({ scrollTo }: HeroProps) {
           </div>
           <div className="absolute bottom-5 right-0 z-20 flex items-center gap-3 rounded-xl bg-[#4c0b66]/90 px-4 py-3 shadow-2xl backdrop-blur sm:bottom-8">
             <span className="text-xs font-bold uppercase tracking-widest text-white/70">Federação</span>
-            <img src={publicAsset("logo-rede.png")} alt="Rede" className="h-9 w-9 object-contain" />
             <img src={publicAsset("logo-psol.png")} alt="PSOL" className="h-9 w-9 object-contain" />
+            <img src={publicAsset("logo-rede.png")} alt="Rede" className="h-9 w-9 object-contain" />
           </div>
         </div>
       </div>

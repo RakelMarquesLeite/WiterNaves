@@ -118,15 +118,16 @@ body {
 
 @media (min-width: 1024px) {
   .about-desktop-portrait {
-    height: clamp(850px, 72vw, 1080px);
-    transform: translateY(-78px) scale(1.36) !important;
-    transform-origin: top right;
+    right: clamp(1rem, 4vw, 3.5rem);
+    height: clamp(720px, 64vw, 910px);
+    transform: translateY(-45px) scale(1.2) !important;
+    transform-origin: top center;
   }
 }
 
 @media (min-width: 1280px) {
   .about-desktop-portrait {
-    transform: translateY(-92px) scale(1.42) !important;
+    transform: translateY(-52px) scale(1.23) !important;
   }
 }
 

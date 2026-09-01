@@ -6,6 +6,7 @@ import fotoAngelica from "@/imports/angelica.webp"
 import fotoZaira from "@/imports/zaira.webp"
 import fotoMaraba from "@/imports/maraba.webp"
 import fotoClaudia from "@/imports/claudia.webp"
+import fotoCleiton from "@/imports/cleiton21.png"
 
 const CANDIDATES = [
   {
@@ -27,7 +28,7 @@ const CANDIDATES = [
     details: "Lúcia Viana compõe a candidatura da Federação PSOL REDE como vice-governadora. A chapa defende uma administração participativa, transparente e presente nos 139 municípios, com atenção especial às políticas sociais e à diversidade do Tocantins.",
   },
   // Dados abaixo são provisórios e podem ser substituídos quando as informações oficiais forem fornecidas.
-  {
+  /*{
     name: "Fábio Ribeiro",
     role: "Candidata a senador",
     number: "180",
@@ -35,7 +36,7 @@ const CANDIDATES = [
     imagePosition: "center 20%",
     brief: "Candidatura comprometida com participação popular, inclusão social e desenvolvimento sustentável.",
     details: "Informações provisórias. Angélica integra a candidatura coletiva da Federação PSOL REDE e defende uma atuação pública próxima das comunidades tocantinenses.",
-  },
+  }*/
   {
     name: "Zaira",
     role: "Candidata a deputada federal",
@@ -55,6 +56,15 @@ const CANDIDATES = [
     details: "Nascido em Grajaú (MA), Marabá construiu sua trajetória em Palmas e mantém atuação ligada à comunicação, ao entretenimento e à participação política. Com experiência em disputas eleitorais anteriores, chega a 2026 defendendo uma nova forma de fazer política, com maior proximidade com a população e valorização das comunidades. Como candidato da Federação *PSOL/REDE*, Marabá coloca seu nome à disposição para representar o Tocantins na Câmara dos Deputados, buscando ampliar a voz da população e contribuir para um Estado mais justo, participativo e sustentável. Marabá 1800 — uma voz do Tocantins em Brasília.*",
   },
   {
+    name: "Cleiton Vieira da Silva",
+    role: "Candidato a deputado federal",
+    number: "5055",
+    image: fotoCleiton,
+    imagePosition: "center 18%",
+    brief: "Servidor público municipal, universitário e militante ativo dos movimentos estudantis da UFNT.",
+    details: "Cleiton Vieira da Silva é servidor público municipal no cargo de motorista, universitário e militante ativo nos movimentos estudantis da Universidade Federal do Norte do Tocantins (UFNT). Participou do Coletivo Juntos, coletivo interno do PSOL 50, e foi diretor de Esportes e Cultura do Centro Acadêmico de Ciências Sociais Florestan Fernandes. Foi um dos delegados do primeiro Fórum Estudantil da UFNT e membro discente dos Conselhos Superiores da universidade (CONSEPE e CONSUNI). Foi candidato a vereador pelo PSOL 50 em Tocantinópolis (TO), em 2023, e atualmente integra o Conselho Fiscal da Associação dos Servidores Públicos de Tocantinópolis (ASMAT). É candidato a deputado federal pelo PSOL 50 no Tocantins como Cleiton Motorista, número 5055.",
+  },
+  /*{
     name: "Cláudia",
     role: "Candidata a deputada federal",
     number: "1833",
@@ -62,7 +72,7 @@ const CANDIDATES = [
     imagePosition: "center 20%",
     brief: "Compromisso com igualdade, sustentabilidade e uma representação política presente e participativa.",
     details: "Informações provisórias. Cláudia defende uma atuação democrática, transparente e conectada às necessidades da população tocantinense.",
-  },
+  },*/
 ]
 
 export default function CandidatesSection() {

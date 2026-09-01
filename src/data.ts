@@ -152,8 +152,7 @@ export const PRINCIPLES_DETAIL = [
     title: "O BEM-ESTAR DA GENTE",
     tagline:
       "Desenvolvimento só faz sentido quando melhora a vida das pessoas.",
-    intro:
-      "O Bem-estar da Gente organiza o Sistema Estadual de Desenvolvimento Territorial. O desenvolvimento econômico do Tocantins precisa produzir qualidade de vida para o conjunto da população.",
+    intro: "O Bem-Estar da gente organiza o Sistema Estadual de desenvolvimento Territorial e o desenvolvimento econômico do Tocantins, que precisam produzir qualidade de vida para o conjunto da população.",
     desc: "O desenvolvimento deixa de ser compreendido apenas pelo crescimento do PIB e passa a ser orientado pela melhoria das condições materiais de existência da população tocantinense.",
     areas: [
       {

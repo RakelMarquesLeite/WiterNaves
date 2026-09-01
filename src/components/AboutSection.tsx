@@ -4,10 +4,10 @@ import fotoWiter2 from "@/imports/fotosobre.png"
 
 export default function AboutSection() {
   return (
-    <section id="sobre" className="about-campaign bg-gray-900 scroll-mt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-stretch gap-0 lg:grid-cols-2">
-          <div className="py-14 sm:py-20 lg:py-10 lg:pr-12">
+    <section id="sobre" className="about-campaign bg-gray-900 scroll-mt-16 lg:min-h-[760px]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:min-h-[760px] lg:px-8">
+        <div className="grid grid-cols-1 items-stretch gap-0 lg:min-h-[760px] lg:grid-cols-2">
+          <div className="py-14 sm:py-20 lg:flex lg:flex-col lg:justify-center lg:py-10 lg:pr-12">
             <span
               className="text-yellow-400 text-sm font-bold uppercase tracking-widest mb-3 block"
               style={{ fontFamily: "var(--font-display)" }}
@@ -36,11 +36,7 @@ export default function AboutSection() {
                 social, Prof. Winter Naves representa uma nova forma de fazer política:
                 transparente, participativa e voltada para o bem-estar de todos.
               </p>
-              <p>
-                Sua candidatura une o compromisso com os direitos fundamentais,
-                o desenvolvimento sustentável e a construção de um Tocantins
-                mais igualitário, onde cada pessoa possa viver com dignidade.
-              </p>
+    
             </div>
 
             <blockquote className="mt-8 text-white text-lg leading-relaxed italic border-l-4 border-yellow-400 pl-6">
