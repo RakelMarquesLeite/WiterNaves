@@ -1,4 +1,3 @@
-import React from "react"
 import logoBranco from "@/imports/logo-branco.png"
 import instagramLogo from "@/imports/instagram-oficial.jpeg"
 import youtubeLogo from "@/imports/youtube-oficial.webp"

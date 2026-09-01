@@ -1,4 +1,3 @@
-import React from "react"
 import planoPdf from "@/imports/ITEM_7._PLANO_DE_GOVERNO_REDE_PSOL_MELHORADO.pdf"
 
 interface PlanSectionProps { shareOrCopy: () => void }

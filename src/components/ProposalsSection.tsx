@@ -1,4 +1,3 @@
-import React from "react"
 import { PROPOSALS } from "../data"
 
 export default function ProposalsSection() {

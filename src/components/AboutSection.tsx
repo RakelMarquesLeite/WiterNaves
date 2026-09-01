@@ -1,4 +1,3 @@
-import React from "react"
 import fotoWiterELucia from "@/imports/witer-e-lucia.png"
 import fotoWiter2 from "@/imports/fotosobre.png"
 

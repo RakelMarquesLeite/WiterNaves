@@ -1,4 +1,3 @@
-import React from "react"
 import { PRINCIPLES_DETAIL } from "../data"
 
 interface PrinciplesSectionProps {

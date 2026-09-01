@@ -1,4 +1,3 @@
-import React from "react"
 import fotoWiterELucia from "@/imports/witer-e-lucia.png"
 import logoBranco from "@/imports/logo-branco.png"
 import planoPdf from "@/imports/ITEM_7._PLANO_DE_GOVERNO_REDE_PSOL_MELHORADO.pdf"
