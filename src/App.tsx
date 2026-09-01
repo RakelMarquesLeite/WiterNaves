@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import type { FormEvent } from "react"
 import { NAV_LINKS, PRINCIPLES_DETAIL } from "./data"
 import { loadNews } from "./storage"
+import type { NewsItem } from "./data"
 import PrincipleModal from "./components/PrincipleModal"
 import AdminPanel from "./components/AdminPanel"
 import Navbar from "./components/Navbar"
@@ -32,7 +33,7 @@ export default function App() {
   const [activeSection, setActiveSection] = useState("inicio")
   const [activePrinciple, setActivePrinciple] = useState<typeof PRINCIPLES_DETAIL[number] | null>(null)
   const [adminOpen, setAdminOpen] = useState(false)
-  const [news, setNews] = useState(loadNews)
+  const [news, setNews] = useState<NewsItem[]>([])
   const [formData, setFormData] = useState({ nome: "", email: "", mensagem: "" })
   const [formSent, setFormSent] = useState(false)
   const [formError, setFormError] = useState("")
@@ -40,13 +41,13 @@ export default function App() {
   const footerClickTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
-    const onStorage = () => setNews(loadNews())
-    window.addEventListener("storage", onStorage)
-    return () => window.removeEventListener("storage", onStorage)
+    let active = true
+    loadNews().then((items) => { if (active) setNews(items) })
+    return () => { active = false }
   }, [])
 
   useEffect(() => {
-    if (!adminOpen) setNews(loadNews())
+    if (!adminOpen) loadNews().then(setNews)
   }, [adminOpen])
 
   useEffect(() => {

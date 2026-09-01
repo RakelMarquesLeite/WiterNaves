@@ -10,13 +10,13 @@ import fotoCleiton from "@/imports/cleiton21.png"
 
 const CANDIDATES = [
   {
-    name: "Prof. Winter Naves",
+    name: "Prof. Witer Naves",
     role: "Candidato a governador",
     number: "50",
     image: fotoWiter,
     imagePosition: "center top",
     brief: "Professor e defensor de uma gestão pública democrática, próxima e comprometida com os direitos do povo tocantinense.",
-    details: "Professor Witer né educador e liderança política do Tocantins, com uma trajetória de mais de 25 anos de atuação política no Partido dos Trabalhadores (PT). Ao longo desse período, construiu sua caminhada ligada à defesa da educação, dos direitos sociais, da juventude e da participação popular. Hoje, no PSOL e Rede Sustentabilidade, Professor Witer coloca sua experiência e sua história à disposição de um novo projeto político para o Tocantins. Candidato ao Governo do Estado em 2026, defende uma gestão mais próxima da população, com prioridade para educação, geração de emprego e renda, empreendedorismo, inclusão social e redução das desigualdades. Sua candidatura representa a busca por uma alternativa política construída a partir do diálogo com as comunidades e da valorização das pessoas que vivem e trabalham no Tocantins.",
+    details: "Professor Witer Naves educador e liderança política do Tocantins, com uma trajetória de mais de 25 anos de atuação política no Partido dos Trabalhadores (PT). Ao longo desse período, construiu sua caminhada ligada à defesa da educação, dos direitos sociais, da juventude e da participação popular. Hoje, no PSOL e Rede Sustentabilidade, Professor Witer coloca sua experiência e sua história à disposição de um novo projeto político para o Tocantins. Candidato ao Governo do Estado em 2026, defende uma gestão mais próxima da população, com prioridade para educação, geração de emprego e renda, empreendedorismo, inclusão social e redução das desigualdades. Sua candidatura representa a busca por uma alternativa política construída a partir do diálogo com as comunidades e da valorização das pessoas que vivem e trabalham no Tocantins.",
   },
   {
     name: "Lúcia Viana",
@@ -56,7 +56,7 @@ const CANDIDATES = [
     details: "Nascido em Grajaú (MA), Marabá construiu sua trajetória em Palmas e mantém atuação ligada à comunicação, ao entretenimento e à participação política. Com experiência em disputas eleitorais anteriores, chega a 2026 defendendo uma nova forma de fazer política, com maior proximidade com a população e valorização das comunidades. Como candidato da Federação *PSOL/REDE*, Marabá coloca seu nome à disposição para representar o Tocantins na Câmara dos Deputados, buscando ampliar a voz da população e contribuir para um Estado mais justo, participativo e sustentável. Marabá 1800 — uma voz do Tocantins em Brasília.*",
   },
   {
-    name: "Cleiton Vieira da Silva",
+    name: "Cleiton Motorista",
     role: "Candidato a deputado federal",
     number: "5055",
     image: fotoCleiton,

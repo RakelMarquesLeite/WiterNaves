@@ -42,7 +42,7 @@ export default function Footer({ navLinks, scrollTo, handleCopyrightClick }: Foo
             <img src={instagramLogo} alt="" className="h-full w-full scale-110 object-cover" />
           </a>
           <a
-            href="https://www.youtube.com/@PSOL50oficial"
+            href="https://youtube.com/@witernaves7985?si=ERLaED-UIpp0bp7b"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="YouTube"

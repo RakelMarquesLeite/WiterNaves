@@ -2,38 +2,33 @@ import { useEffect, useState } from "react"
 import type { FormEvent } from "react"
 import type { NewsItem } from "../data"
 import {
-  ADMIN_PASSWORD_HASH,
   ADMIN_SESSION_KEY,
+  loadLocalNews,
   loadNews,
-  saveNews,
+  loginAdmin,
+  publishNews,
+  validateAdminSession,
 } from "../storage"
 
-const SESSION_DURATION = 15 * 60 * 1000
-const MAX_LOGIN_ATTEMPTS = 5
-const LOCK_DURATION = 15 * 60 * 1000
 const WORD_LIMITS = { title: 18, summary: 55 }
 
 const wordCount = (value: string) =>
   value.trim().split(/\s+/).filter(Boolean).length
 const isValidSession = () => {
-  const expiresAt = Number(sessionStorage.getItem(ADMIN_SESSION_KEY))
-  return Number.isFinite(expiresAt) && expiresAt > Date.now()
-}
-const hashPassword = async (value: string) => {
-  const bytes = new TextEncoder().encode(value)
-  const hash = await crypto.subtle.digest("SHA-256", bytes)
-  return Array.from(new Uint8Array(hash), (byte) =>
-    byte.toString(16).padStart(2, "0"),
-  ).join("")
+  const token = sessionStorage.getItem(ADMIN_SESSION_KEY)
+  const valid = Boolean(token && /^[A-Za-z0-9_-]{43}$/.test(token))
+  if (!valid) sessionStorage.removeItem(ADMIN_SESSION_KEY)
+  return valid
 }
 
 export default function AdminPanel({ onClose }: { onClose: () => void }) {
-  const [authed, setAuthed] = useState(isValidSession)
+  const [authed, setAuthed] = useState(false)
+  const [username, setUsername] = useState("rakel")
   const [pw, setPw] = useState("")
   const [pwError, setPwError] = useState(false)
   const [loginMessage, setLoginMessage] = useState("")
   const [isLoggingIn, setIsLoggingIn] = useState(false)
-  const [news, setNews] = useState<NewsItem[]>(loadNews)
+  const [news, setNews] = useState<NewsItem[]>(loadLocalNews)
   const [editing, setEditing] = useState<NewsItem | null>(null)
   const [form, setForm] = useState({
     date: "",
@@ -43,9 +38,12 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
     url: "",
   })
   const [saved, setSaved] = useState(false)
+  const [publishError, setPublishError] = useState("")
 
   useEffect(() => {
     document.body.style.overflow = "hidden"
+    loadNews().then(setNews)
+    if (isValidSession()) validateAdminSession().then(setAuthed)
     return () => {
       document.body.style.overflow = ""
     }
@@ -53,51 +51,19 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault()
-    const lockedUntil = Number(
-      localStorage.getItem("witer-naves-admin-locked-until"),
-    )
-    if (lockedUntil > Date.now()) {
-      const minutes = Math.ceil((lockedUntil - Date.now()) / 60000)
-      setPwError(true)
-      setLoginMessage(
-        `Acesso temporariamente bloqueado. Tente novamente em ${minutes} min.`,
-      )
-      return
-    }
-
     setIsLoggingIn(true)
-    const passwordHash = await hashPassword(pw)
-    if (passwordHash === ADMIN_PASSWORD_HASH) {
-      sessionStorage.setItem(
-        ADMIN_SESSION_KEY,
-        String(Date.now() + SESSION_DURATION),
-      )
-      localStorage.removeItem("witer-naves-admin-attempts")
+    try {
+      await loginAdmin(username, pw)
       setAuthed(true)
       setPwError(false)
       setLoginMessage("")
       setPw("")
-    } else {
-      const attempts =
-        Number(localStorage.getItem("witer-naves-admin-attempts") || "0") + 1
-      localStorage.setItem("witer-naves-admin-attempts", String(attempts))
-      if (attempts >= MAX_LOGIN_ATTEMPTS) {
-        localStorage.setItem(
-          "witer-naves-admin-locked-until",
-          String(Date.now() + LOCK_DURATION),
-        )
-        localStorage.removeItem("witer-naves-admin-attempts")
-        setLoginMessage(
-          "Muitas tentativas. O acesso foi bloqueado por 15 minutos.",
-        )
-      } else {
-        setLoginMessage(
-          `Senha incorreta. Restam ${MAX_LOGIN_ATTEMPTS - attempts} tentativa(s).`,
-        )
-      }
+    } catch (error) {
+      setLoginMessage(error instanceof Error ? error.message : "Não foi possível entrar.")
       setPwError(true)
+    } finally {
+      setIsLoggingIn(false)
     }
-    setIsLoggingIn(false)
   }
 
   const startEdit = (n: NewsItem) => {
@@ -123,12 +89,8 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
     setForm({ date: "", category: "", title: "", summary: "", url: "" })
   }
 
-  const saveItem = () => {
+  const saveItem = async () => {
     if (!editing) return
-    if (!isValidSession()) {
-      setAuthed(false)
-      return
-    }
     if (
       !form.date.trim() ||
       !form.category.trim() ||
@@ -152,22 +114,29 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
     const updated = news.some((n) => n.id === editing.id)
       ? news.map((n) => (n.id === editing.id ? { ...editing, ...form } : n))
       : [{ ...editing, ...form }, ...news]
-    setNews(updated)
-    saveNews(updated)
-    setEditing(null)
-    setSaved(true)
-    setTimeout(() => setSaved(false), 2000)
+    try {
+      setPublishError("")
+      await publishNews(updated)
+      setNews(updated)
+      setEditing(null)
+      setSaved(true)
+      setTimeout(() => setSaved(false), 2000)
+    } catch (error) {
+      setPublishError(error instanceof Error ? error.message : "Não foi possível publicar.")
+      if ((error as Error).message.includes("Sessão")) setAuthed(false)
+    }
   }
 
-  const deleteItem = (id: string) => {
-    if (!isValidSession()) {
-      setAuthed(false)
-      return
-    }
+  const deleteItem = async (id: string) => {
     if (!confirm("Excluir esta notícia?")) return
     const updated = news.filter((n) => n.id !== id)
-    setNews(updated)
-    saveNews(updated)
+    try {
+      setPublishError("")
+      await publishNews(updated)
+      setNews(updated)
+    } catch (error) {
+      setPublishError(error instanceof Error ? error.message : "Não foi possível excluir.")
+    }
   }
 
   return (
@@ -202,9 +171,17 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
         {!authed ? (
           <form onSubmit={handleLogin} className="p-6 sm:p-8 max-w-sm mx-auto">
             <p className="text-gray-400 text-sm mb-6 text-center leading-relaxed">
-              Acesso restrito à equipe da campanha. A sessão expira após 15
-              minutos.
+              Acesso restrito à administração do site.
             </p>
+            <label className="block text-gray-400 text-sm font-semibold mb-2">
+              Usuário
+            </label>
+            <input
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              autoComplete="username"
+              className="w-full rounded-xl px-4 py-3 text-white text-sm outline-none mb-4 bg-[#1c1c1c] border border-white/10"
+            />
             <label className="block text-gray-400 text-sm font-semibold mb-2">
               Senha
             </label>
@@ -212,6 +189,7 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
               type="password"
               value={pw}
               onChange={(e) => setPw(e.target.value)}
+              autoComplete="current-password"
               placeholder="••••••••"
               className="w-full rounded-xl px-4 py-3 text-white text-sm outline-none mb-2"
               style={{
@@ -253,6 +231,11 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
                 ✓ Salvo com sucesso!
               </div>
             )}
+            {publishError && (
+              <div className="mb-4 rounded-xl px-4 py-3 text-sm font-semibold text-red-400 bg-red-400/10 border border-red-400/20" role="alert">
+                {publishError}
+              </div>
+            )}
 
             {/* Formulário edição */}
             {editing && (
@@ -271,10 +254,16 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
                     ? "Editar Notícia"
                     : "Nova Notícia"}
                 </h3>
+                <div className="mb-5 rounded-xl bg-yellow-400/10 border border-yellow-400/20 px-4 py-3">
+                  <p className="text-yellow-300 text-xs font-bold mb-1">Como publicar</p>
+                  <p className="text-gray-300 text-xs leading-relaxed">
+                    Preencha todos os campos marcados com <span className="text-red-400 font-bold">*</span>. O link é opcional. Ao clicar em publicar, a notícia ficará disponível no site.
+                  </p>
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
                   <div>
                     <label className="block text-gray-500 text-xs mb-1">
-                      Data
+                      Data da publicação <span className="text-red-400">*</span>
                     </label>
                     <input
                       maxLength={40}
@@ -283,16 +272,18 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
                         setForm((v) => ({ ...v, date: e.target.value }))
                       }
                       placeholder="01 AGO 2026"
+                      required
                       className="w-full rounded-lg px-3 py-2 text-white text-sm outline-none"
                       style={{
                         background: "#111",
                         border: "1px solid rgba(255,255,255,0.1)",
                       }}
                     />
+                    <p className="text-gray-600 text-[11px] mt-1">Exemplo: 01 AGO 2026</p>
                   </div>
                   <div>
                     <label className="block text-gray-500 text-xs mb-1">
-                      Categoria
+                      Categoria <span className="text-red-400">*</span>
                     </label>
                     <input
                       maxLength={24}
@@ -301,17 +292,19 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
                         setForm((v) => ({ ...v, category: e.target.value }))
                       }
                       placeholder="Campanha"
+                      required
                       className="w-full rounded-lg px-3 py-2 text-white text-sm outline-none"
                       style={{
                         background: "#111",
                         border: "1px solid rgba(255,255,255,0.1)",
                       }}
                     />
+                    <p className="text-gray-600 text-[11px] mt-1">Ex.: Campanha, Evento ou Proposta</p>
                   </div>
                 </div>
                 <div className="mb-3">
                   <label className="flex justify-between gap-3 text-gray-500 text-xs mb-1">
-                    <span>Título</span>
+                    <span>Título da notícia <span className="text-red-400">*</span></span>
                     <span>
                       {wordCount(form.title)}/{WORD_LIMITS.title} palavras
                     </span>
@@ -325,16 +318,18 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
                       }
                     }}
                     placeholder="Título da notícia"
+                    required
                     className="w-full rounded-lg px-3 py-2 text-white text-sm outline-none"
                     style={{
                       background: "#111",
                       border: "1px solid rgba(255,255,255,0.1)",
                     }}
                   />
+                  <p className="text-gray-600 text-[11px] mt-1">Escreva uma chamada direta, com no máximo {WORD_LIMITS.title} palavras.</p>
                 </div>
                 <div className="mb-4">
                   <label className="flex justify-between gap-3 text-gray-500 text-xs mb-1">
-                    <span>Resumo</span>
+                    <span>Resumo <span className="text-red-400">*</span></span>
                     <span>
                       {wordCount(form.summary)}/{WORD_LIMITS.summary} palavras
                     </span>
@@ -349,12 +344,14 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
                     }}
                     rows={3}
                     placeholder="Resumo da notícia…"
+                    required
                     className="w-full rounded-lg px-3 py-2 text-white text-sm outline-none resize-none"
                     style={{
                       background: "#111",
                       border: "1px solid rgba(255,255,255,0.1)",
                     }}
                   />
+                  <p className="text-gray-600 text-[11px] mt-1">Explique o fato principal em até {WORD_LIMITS.summary} palavras.</p>
                 </div>
                 <div className="mb-4">
                   <label className="block text-gray-500 text-xs mb-1">
@@ -373,7 +370,13 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
                       border: "1px solid rgba(255,255,255,0.1)",
                     }}
                   />
+                  <p className="text-gray-600 text-[11px] mt-1">Use somente se a notícia completa estiver em outra página. Deve começar com https://</p>
                 </div>
+                {(!form.date.trim() || !form.category.trim() || !form.title.trim() || !form.summary.trim()) && (
+                  <p className="text-amber-300 text-xs mb-3" role="status">
+                    Preencha os campos obrigatórios para habilitar a publicação.
+                  </p>
+                )}
                 <div className="flex gap-3">
                   <button
                     onClick={saveItem}
@@ -392,7 +395,7 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
                       fontFamily: "var(--font-display)",
                     }}
                   >
-                    SALVAR
+                    PUBLICAR NOTÍCIA
                   </button>
                   <button
                     onClick={() => setEditing(null)}
@@ -406,18 +409,20 @@ export default function AdminPanel({ onClose }: { onClose: () => void }) {
 
             {/* Botão nova notícia */}
             {!editing && (
-              <button
-                onClick={startNew}
-                className="w-full py-3 rounded-xl font-black text-sm mb-5 flex items-center justify-center gap-2"
-                style={{
-                  background: "rgba(245,196,0,0.1)",
-                  border: "1px dashed rgba(245,196,0,0.3)",
-                  color: "#f5c800",
-                  fontFamily: "var(--font-display)",
-                }}
-              >
-                + NOVA NOTÍCIA
-              </button>
+              <div className="mb-5">
+                <button
+                  onClick={startNew}
+                  className="w-full py-3 rounded-xl font-black text-sm flex items-center justify-center gap-2"
+                  style={{
+                    background: "rgba(245,196,0,0.1)",
+                    border: "1px dashed rgba(245,196,0,0.3)",
+                    color: "#f5c800",
+                    fontFamily: "var(--font-display)",
+                  }}
+                >
+                  + NOVA NOTÍCIA
+                </button>
+              </div>
             )}
 
             {/* Lista */}

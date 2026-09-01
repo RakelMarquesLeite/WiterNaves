@@ -2,6 +2,8 @@ import { defineConfig, type HtmlTagDescriptor, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'node:path'
+import { readFile, writeFile } from 'node:fs/promises'
+import { randomBytes, timingSafeEqual } from 'node:crypto'
 
 import siteConfiguration from './.figma/make/site.json'
 
@@ -23,6 +25,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       react(),
       tailwindcss(),
+      localNewsApi(),
       figmaSiteConfiguration(siteConfiguration),
       figmaErrorOverlayReplay(),
       figmaReactRefreshBoundaryFallback(),
@@ -45,6 +48,90 @@ export default defineConfig(({ mode }) => {
     },
   }
 })
+
+/** API local equivalente às Functions da Netlify para desenvolvimento no Vite. */
+function localNewsApi(): Plugin {
+  const databasePath = path.resolve(__dirname, 'public/bd.json')
+  const sessions = new Map<string, number>()
+  const json = (res: import('node:http').ServerResponse, status: number, data: unknown) => {
+    res.statusCode = status
+    res.setHeader('Content-Type', 'application/json; charset=utf-8')
+    res.setHeader('Cache-Control', 'no-store')
+    res.end(JSON.stringify(data))
+  }
+  const readBody = (req: import('node:http').IncomingMessage) => new Promise<unknown>((resolve, reject) => {
+    let body = ''
+    req.on('data', (chunk) => {
+      body += chunk
+      if (body.length > 1_000_000) reject(new Error('Payload muito grande'))
+    })
+    req.on('end', () => {
+      try { resolve(JSON.parse(body || '{}')) } catch (error) { reject(error) }
+    })
+    req.on('error', reject)
+  })
+  const equal = (received: string, expected: string) => {
+    const a = Buffer.from(received)
+    const b = Buffer.from(expected)
+    return a.length === b.length && timingSafeEqual(a, b)
+  }
+  const authorized = (req: import('node:http').IncomingMessage) => {
+    const token = req.headers.authorization?.replace(/^Bearer\s+/i, '') || ''
+    const expiresAt = sessions.get(token) || 0
+    if (expiresAt <= Date.now()) sessions.delete(token)
+    return expiresAt > Date.now()
+  }
+
+  return {
+    name: 'local-news-api',
+    apply: 'serve',
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        const route = req.url?.split('?')[0]
+        if (route === '/api/admin/login' && req.method === 'POST') {
+          try {
+            const body = await readBody(req) as { username?: string; password?: string }
+            const username = process.env.ADMIN_USERNAME || 'rakel'
+            const password = process.env.ADMIN_PASSWORD || '123@mudar'
+            if (!equal(String(body.username || ''), username) || !equal(String(body.password || ''), password)) {
+              return json(res, 401, { error: 'Usuário ou senha incorretos.' })
+            }
+            const token = randomBytes(32).toString('base64url')
+            sessions.set(token, Date.now() + 60 * 60 * 1000)
+            return json(res, 200, { token })
+          } catch {
+            return json(res, 400, { error: 'Dados de login inválidos.' })
+          }
+        }
+        if (route !== '/api/news') return next()
+        if (req.method === 'HEAD') {
+          res.statusCode = authorized(req) ? 204 : 401
+          return res.end()
+        }
+        if (req.method === 'GET') {
+          try {
+            return json(res, 200, JSON.parse(await readFile(databasePath, 'utf8')))
+          } catch {
+            return json(res, 200, [])
+          }
+        }
+        if (req.method === 'PUT') {
+          if (!authorized(req)) return json(res, 401, { error: 'Sessão inválida ou expirada.' })
+          try {
+            const news = await readBody(req)
+            if (!Array.isArray(news)) return json(res, 400, { error: 'Formato das notícias inválido.' })
+            await writeFile(databasePath, `${JSON.stringify(news, null, 2)}\n`, 'utf8')
+            return json(res, 200, { success: true, news })
+          } catch {
+            return json(res, 500, { error: 'Não foi possível salvar o bd.json.' })
+          }
+        }
+        res.statusCode = 405
+        return res.end()
+      })
+    },
+  }
+}
 
 type FigmaSiteConfiguration = {
   title?: string

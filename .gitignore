@@ -11,3 +11,6 @@ logs/
 *.log
 .claude-replay.*
 .tmp-*
+
+# Banco local de notícias (a cópia da hospedagem não deve ser sobrescrita)
+public/bd.json

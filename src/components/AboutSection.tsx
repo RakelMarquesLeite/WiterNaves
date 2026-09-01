@@ -47,7 +47,7 @@ export default function AboutSection() {
               className="block mt-3 text-yellow-400 font-bold not-italic text-sm"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              — PROF. WINTER NAVES
+              — PROF. WITER NAVES
             </cite>
           </div>
 
