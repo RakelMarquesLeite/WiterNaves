@@ -13,6 +13,10 @@ if ! command -v npm >/dev/null 2>&1; then
   exit 1
 fi
 
+echo "Instalando dependências do sistema (Nginx e Git LFS)..."
+sudo apt-get update
+sudo apt-get install -y nginx git-lfs
+
 echo "Construindo o projeto em ${APP_DIR}..."
 cd "$APP_DIR"
 
@@ -22,6 +26,14 @@ if [[ ! -f package.json ]]; then
   exit 1
 fi
 
+if [[ -d .git ]]; then
+  echo "Baixando imagens e demais arquivos armazenados no Git LFS..."
+  git lfs install --local
+  git lfs pull
+else
+  echo "Aviso: ${APP_DIR} não é um clone Git; não foi possível executar git lfs pull."
+fi
+
 if [[ -f package-lock.json || -f npm-shrinkwrap.json ]]; then
   npm ci
 else
@@ -29,10 +41,6 @@ else
   npm install
 fi
 npm run build
-
-echo "Instalando o Nginx..."
-sudo apt-get update
-sudo apt-get install -y nginx
 
 echo "Publicando os arquivos..."
 sudo install -d -m 755 "$WEB_ROOT"
