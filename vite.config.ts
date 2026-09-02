@@ -5,7 +5,8 @@ import path from 'node:path'
 import { readFile, writeFile } from 'node:fs/promises'
 import { randomBytes, timingSafeEqual } from 'node:crypto'
 
-import siteConfiguration from './.figma/make/site.json'
+// Integração do Figma Make desativada: o projeto agora é publicado fora do Figma.
+// import siteConfiguration from './.figma/make/site.json'
 
 // Vite config — https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -26,10 +27,11 @@ export default defineConfig(({ mode }) => {
       react(),
       tailwindcss(),
       localNewsApi(),
-      figmaSiteConfiguration(siteConfiguration),
-      figmaErrorOverlayReplay(),
-      figmaReactRefreshBoundaryFallback(),
-      figmaMakeKitPlugin({ storiesGlob: '/src/**/*.stories.{ts,tsx,js,jsx}' }),
+      // Plugins exclusivos do ambiente Figma Make não são necessários na EC2.
+      // figmaSiteConfiguration(siteConfiguration),
+      // figmaErrorOverlayReplay(),
+      // figmaReactRefreshBoundaryFallback(),
+      // figmaMakeKitPlugin({ storiesGlob: '/src/**/*.stories.{ts,tsx,js,jsx}' }),
     ],
     resolve: {
       alias: {
